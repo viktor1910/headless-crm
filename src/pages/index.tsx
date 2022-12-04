@@ -9,4 +9,5 @@ const HomePage: NextPageWithLayout = () => {
 HomePage.getLayout = page => {
   return <SCsomething>{page}</SCsomething>;
 };
+
 export default HomePage;
