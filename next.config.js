@@ -5,6 +5,10 @@ const nextConfig = {
   compiler: {
     styledComponents: true,
   },
+  devIndicators: {
+    autoPrerender: false,
+    buildActivityPosition: 'bottom-right',
+  },
 };
 
 module.exports = nextConfig;
