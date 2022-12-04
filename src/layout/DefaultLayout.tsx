@@ -5,7 +5,13 @@ interface PageLayoutProps {
 }
 
 const PageLayout = ({ children }: PageLayoutProps) => {
-  return <div>{children}</div>;
+  return (
+    <>
+      <div>This is head layout</div>
+      <main>{children}</main>
+      <div>This is footer</div>
+    </>
+  );
 };
 
 export default PageLayout;
