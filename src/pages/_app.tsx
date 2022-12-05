@@ -3,7 +3,7 @@ import type { AppProps } from 'next/app';
 import { NextPage } from 'next/types';
 import { ReactElement } from 'react';
 import PageLayout from '~/layout/DefaultLayout';
-import 'bootstrap/dist/css/bootstrap.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 export type NextPageWithLayout<P = {}, IP = P> = NextPage<PageTransitionEvent, IP> & {
   getLayout: (page: ReactElement) => React.ReactNode;
