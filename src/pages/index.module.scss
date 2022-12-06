@@ -12,13 +12,18 @@
   }
 }
 .image {
-  position: relative !important;
-  height: 500px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-self: center;
   width: 100%;
   max-width: 420px;
+  min-height: 540px;
   margin: 0 auto;
   @media screen and (min-width: 992px) {
-    height: 540px;
     max-width: unset;
+  }
+  img {
+    height: auto !important;
   }
 }

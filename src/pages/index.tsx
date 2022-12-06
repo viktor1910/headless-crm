@@ -28,7 +28,6 @@ const HomePage = () => {
                 src="https://shynhpremium.vn/wp-content/uploads/2021/06/Banner-Thermage-FLX-resize-419-x-553.png"
                 alt="1"
                 fill
-                sizes="100vw"
               />
             </div>
           </Carousel.Item>
