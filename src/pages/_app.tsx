@@ -1,4 +1,4 @@
-import './index.style.css';
+import './index.scss';
 import type { AppProps } from 'next/app';
 import { NextPage } from 'next/types';
 import { ReactElement } from 'react';

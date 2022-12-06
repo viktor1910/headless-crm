@@ -1,0 +1,24 @@
+.imageBanner {
+  display: none;
+  @media screen and (min-width: 992px) {
+    display: block;
+  }
+}
+
+.imageBannerMd {
+  display: block;
+  @media screen and (min-width: 992px) {
+    display: none;
+  }
+}
+.image {
+  position: relative !important;
+  height: 500px;
+  width: 100%;
+  max-width: 420px;
+  margin: 0 auto;
+  @media screen and (min-width: 992px) {
+    height: 540px;
+    max-width: unset;
+  }
+}
