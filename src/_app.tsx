@@ -1,7 +1,7 @@
-import './index.style.css';
+import '../styles/globals.css';
 import type { AppProps } from 'next/app';
 import { NextPage } from 'next/types';
-import { ReactElement } from 'react';
+import { ReactElement, useEffect } from 'react';
 
 export type NextPageWithLayout<P = {}, IP = P> = NextPage<PageTransitionEvent, IP> & {
   getLayout: (page: ReactElement) => React.ReactNode;
