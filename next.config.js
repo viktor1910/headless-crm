@@ -10,7 +10,7 @@ const nextConfig = {
     remotePatterns: [
       {
         protocol: 'https',
-        hostname: 'shynhpremium.vn',
+        hostname: 'kangheebedemo.000webhostapp.com',
       },
     ],
   },

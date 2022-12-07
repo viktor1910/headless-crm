@@ -1,60 +1,97 @@
-import Head from 'next/head';
-import Image from 'next/image';
-import { Carousel } from 'react-bootstrap';
-import styles from './index.module.scss';
-import { PageLayout } from '../layout/PageLayout';
+// import { PageLayout } from '../layout/PageLayout';
+import { PageLayout } from '~/layout/PageLayout/index';
+import Text from '~/components/Text';
+import Banner from '~/components/Banner';
+import { Container } from 'react-bootstrap';
+import Section from '~/components/Section';
+import { GetStaticProps } from 'next';
+import client from '~/apollo/client';
+import { GET_HOME_PAGE_IMAGE } from '~/apollo/queries/get-homepage-image';
 
-export default function Home() {
+interface HomeProps {
+  bannerMd: Array<{
+    src: string;
+    alt: string;
+    title: string;
+  }>;
+  bannerLg: Array<{
+    src: string;
+    alt: string;
+    title: string;
+  }>;
+}
+
+export default function Home({ bannerMd, bannerLg }: HomeProps) {
+  console.log('🚀 ~ file: index.tsx:25 ~ Home ~ bannerLg', bannerLg);
+
   return (
-    <PageLayout>
-      <Head>
-        <link
-          href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css"
-          rel="stylesheet"
-          integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1"
-          crossOrigin="anonymous"
-        />
-        <link
-          rel="stylesheet"
-          href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css"
-        ></link>
-        {/* {* Google Fonts *} */}
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
-          rel="stylesheet"
-        ></link>
-      </Head>
-
+    <>
       <div>
-        <div className={styles.imageBanner}>
-          <Carousel>
-            <Carousel.Item>
-              <div className={styles.image}>
-                <Image
-                  src="https://shynhpremium.vn/wp-content/uploads/2021/06/SIET-MO-CANH-TAY-1546-x-540.png"
-                  alt="1"
-                  fill
-                />
-              </div>
-            </Carousel.Item>
-          </Carousel>
-        </div>
-        <div className={styles.imageBannerMd}>
-          <Carousel>
-            <Carousel.Item>
-              <div className={styles.image}>
-                <Image
-                  src="https://shynhpremium.vn/wp-content/uploads/2021/06/Banner-Thermage-FLX-resize-419-x-553.png"
-                  alt="1"
-                  fill
-                />
-              </div>
-            </Carousel.Item>
-          </Carousel>
-        </div>
+        <Banner bannerLg={bannerLg} bannerMd={bannerMd} />
       </div>
-    </PageLayout>
+      <Container>
+        <Section title="CHÀO MỪNG BẠN ĐẾN VỚI" subTitle="VIỆN THẨM MỸ NÂNG CƠ CÔNG NGHỆ CAO HÀNG ĐẦU CHÂU Á">
+          <Text
+            type="body"
+            style={{
+              textAlign: 'center',
+              color: '#666',
+            }}
+          >
+            Viện thẩm mỹ Công nghệ cao SHYNH PREMIUM ra đời năm 2018 với sứ mệnh mang đến cho quý khách hàng những trải
+            nghiệm làm đẹp chất lượng và cao cấp nhất. Tự hào là Viện thẩm mỹ dẫn đầu xu thế làm đẹp với 5 chi nhánh
+            trên cả nước, Shynh Premium hiện đang sở hữu hơn 10 Công nghệ cao hàng đầu Thế giới, hân hạnh đồng hành
+            trong hành trình làm đẹp của hàng triệu phụ nữ Việt Nam.
+          </Text>
+          <Text
+            type="body"
+            style={{
+              textAlign: 'center',
+              color: '#666',
+              marginTop: '10px',
+            }}
+          >
+            Với lối kiến trúc ấn tượng và sang trọng; quy tụ đội ngũ bác sĩ nội khoa hàng đầu, kỹ thuật viên tay nghề
+            cao, giàu kinh nghiệm, quý khách hàng sẽ được tận hưởng một không gian thư giãn đẳng cấp 5 sao cũng như các
+            dịch vụ hoàn hảo tại SHYNH PREMIUM.
+          </Text>
+          <Text
+            type="body"
+            style={{
+              textAlign: 'center',
+              color: '#666',
+              marginTop: '10px',
+            }}
+          >
+            CHỌN SHYNH LÀ XINH ĐẸP!
+          </Text>
+        </Section>
+      </Container>
+    </>
   );
 }
+
+export const getStaticProps: GetStaticProps = async context => {
+  const { data } = await client.query({
+    query: GET_HOME_PAGE_IMAGE,
+  });
+  const bannerMd = data.bannerMd.edges.map((edge: any) => {
+    return {
+      src: edge.node.sourceUrl,
+      alt: edge.node.altText,
+    };
+  });
+  const bannerLg = data.bannerLg.edges.map((edge: any) => {
+    return {
+      src: edge.node.sourceUrl,
+      alt: edge.node.altText,
+    };
+  });
+
+  return {
+    props: {
+      bannerMd: bannerMd,
+      bannerLg: bannerLg,
+    },
+  };
+};

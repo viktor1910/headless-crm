@@ -1,0 +1,35 @@
+.imageBanner {
+  display: none;
+  @media screen and (min-width: 992px) {
+    display: block;
+    margin-bottom: 70px;
+  }
+}
+
+.imageBannerMd {
+  display: block;
+  margin-bottom: 20px;
+  @media screen and (min-width: 992px) {
+    display: none;
+  }
+}
+.image {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-self: center;
+  width: 100%;
+  max-width: 420px;
+  min-height: 540px;
+  margin: 0 auto;
+  @media screen and (min-width: 992px) {
+    max-width: unset;
+  }
+  img {
+    height: auto !important;
+  }
+}
+
+.carouselItem {
+  transition: opacity 1s ease-in-out !important;
+}
