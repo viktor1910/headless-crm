@@ -4,23 +4,30 @@ import Text from '~/components/Text';
 import Banner from '~/components/Banner';
 import { Container } from 'react-bootstrap';
 import Section from '~/components/Section';
+import { GetStaticProps } from 'next';
+import client from '~/apollo/client';
+import { GET_HOME_PAGE_IMAGE } from '~/apollo/queries/get-homepage-image';
 
-export default function Home() {
+interface HomeProps {
+  bannerMd: Array<{
+    src: string;
+    alt: string;
+    title: string;
+  }>;
+  bannerLg: Array<{
+    src: string;
+    alt: string;
+    title: string;
+  }>;
+}
+
+export default function Home({ bannerMd, bannerLg }: HomeProps) {
+  console.log('🚀 ~ file: index.tsx:25 ~ Home ~ bannerLg', bannerLg);
+
   return (
     <PageLayout>
       <MainSlider>
-        <Banner
-          images={[
-            {
-              desktop: 'https://shynhpremium.vn/wp-content/uploads/2021/06/SIET-MO-CANH-TAY-1546-x-540.png',
-              mobile: 'https://shynhpremium.vn/wp-content/uploads/2021/06/Banner-Thermage-FLX-resize-419-x-553.png',
-            },
-            {
-              desktop: 'https://shynhpremium.vn/wp-content/uploads/2021/06/Filler-tao-hinh-1546-x-540.png',
-              mobile: 'https://shynhpremium.vn/wp-content/uploads/2021/06/Banner-Thermage-FLX-resize-419-x-553.png',
-            },
-          ]}
-        />
+        <Banner bannerLg={bannerLg} bannerMd={bannerMd} />
       </MainSlider>
       <Container>
         <Section title="CHÀO MỪNG BẠN ĐẾN VỚI" subTitle="VIỆN THẨM MỸ NÂNG CƠ CÔNG NGHỆ CAO HÀNG ĐẦU CHÂU Á">
@@ -63,3 +70,28 @@ export default function Home() {
     </PageLayout>
   );
 }
+
+export const getStaticProps: GetStaticProps = async context => {
+  const { data } = await client.query({
+    query: GET_HOME_PAGE_IMAGE,
+  });
+  const bannerMd = data.bannerMd.edges.map((edge: any) => {
+    return {
+      src: edge.node.sourceUrl,
+      alt: edge.node.altText,
+    };
+  });
+  const bannerLg = data.bannerLg.edges.map((edge: any) => {
+    return {
+      src: edge.node.sourceUrl,
+      alt: edge.node.altText,
+    };
+  });
+
+  return {
+    props: {
+      bannerMd: bannerMd,
+      bannerLg: bannerLg,
+    },
+  };
+};

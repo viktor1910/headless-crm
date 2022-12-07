@@ -4,21 +4,25 @@ import { Carousel } from 'react-bootstrap';
 import styles from './index.module.scss';
 
 interface CarouselProps {
-  images: Array<{
-    desktop: string;
-    mobile: string;
+  bannerMd: Array<{
+    src: string;
+    alt: string;
+  }>;
+  bannerLg: Array<{
+    src: string;
+    alt: string;
   }>;
 }
 
-const Banner = ({ images }: CarouselProps) => {
+const Banner = ({ bannerMd, bannerLg }: CarouselProps) => {
   return (
     <>
       <div className={styles.imageBanner}>
         <Carousel fade>
-          {images.map(image => (
-            <Carousel.Item key={image.desktop} className={styles.carouselItem}>
+          {bannerLg.map(image => (
+            <Carousel.Item key={image.src} className={styles.carouselItem}>
               <div className={styles.image}>
-                <Image src={image.desktop} alt="1" fill />
+                <Image src={image.src} alt={image.alt} fill />
               </div>
             </Carousel.Item>
           ))}
@@ -26,10 +30,10 @@ const Banner = ({ images }: CarouselProps) => {
       </div>
       <div className={styles.imageBannerMd}>
         <Carousel>
-          {images.map(image => (
-            <Carousel.Item key={image.mobile}>
+          {bannerMd.map(image => (
+            <Carousel.Item key={image.src}>
               <div className={styles.image}>
-                <Image src={image.mobile} alt="1" fill />
+                <Image src={image.src} alt={image.alt} fill />
               </div>
             </Carousel.Item>
           ))}
