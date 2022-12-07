@@ -16,13 +16,6 @@ const Header = () => {
           <div className="col-sm">
             <h2>Col-2</h2>
           </div>
-          {/* <button type="button" className="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
-          <span className="navbar-toggler-icon"></span>
-        </button> */}
-
-          {/* <button type="button" className="btn btn-secondary">
-          <i className="bi-search"></i>
-        </button> */}
         </div>
 
         <ul className="nav justify-content-center border-bottom">
