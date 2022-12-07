@@ -1,27 +1,13 @@
 import React from 'react';
-import {
-  FooterContainer,
-  FooterInfoContact,
-  FooterAddressWrap,
-  FooterSocial,
-  FooterAddressCompany,
-  FooterCopyright,
-  FooterMST,
-  FooterForm,
-  FormGroup,
-  Label,
-  Input,
-  Button,
-  FooterText,
-} from '../pages/style';
 import Image from 'next/image';
-import logo from '../../public/img/download.png';
+import logo from '../../../../public/img/download.png';
+import styles from '../index.module.scss';
 const Footer = () => {
   return (
     <>
       <div className="bg-light p-5 ">
         <div className="row">
-          <div className="col-sm mx-auto text-center">
+          <div className={`col-sm mx-auto text-center ${styles.footerAddress}`}>
             <h2>Công ty TNHH Shynh House</h2>
             <p>591 Sư Vạn Hạnh, Phường 13, Quận 10</p>
             <p>Email:cskh@shynhpremium.vn | 1900989800</p>
@@ -30,7 +16,7 @@ const Footer = () => {
             <Image src={logo} objectFit="cover" alt="" width={180} height={150} />
             <p>Mã Số Thuế :111111111 do Sở Kế Hoạch đầu tư TP.HCM cấp ngày 13/02/2015</p>
           </div>
-          <div className="col-sm text-center">
+          <div className={`col-sm text-center ${styles.footerForm}`}>
             {' '}
             <h4>Đăng Ký Nhận Thông Tin Khuyến Mãi</h4>
             <input type="text" className="form-control m-2" placeholder="HOVATEN" />
@@ -49,7 +35,7 @@ const Footer = () => {
         </div>
       </div>
 
-      <div className="col d-flex justify-content-center bg-dark p-2">
+      <div className={`col d-flex justify-content-center bg-dark p-2`}>
         <p className="text-white">© 2021 SHYNH PREMIUM.</p>
       </div>
     </>
