@@ -1,52 +1,43 @@
 import React from 'react';
 import Image from 'next/image';
 import logo from '../../../../public/img/download.png';
+import Container from 'react-bootstrap/Container';
+import Nav from 'react-bootstrap/Nav';
+import Navbar from 'react-bootstrap/Navbar';
+import Offcanvas from 'react-bootstrap/Offcanvas';
 import styles from '../index.module.scss';
 const Header = () => {
   return (
-    <header>
-      <div className="container">
-        <div className="row d-flex justify-content-center text-center ">
-          <div className="col-sm">
-            <h2>Col-1</h2>
-          </div>
-          <div className="col-sm">
-            <Image src={logo} alt="" width={180} height={150} />
-          </div>
-          <div className="col-sm">
-            <h2>Col-2</h2>
-          </div>
-        </div>
+    <Navbar bg="white" expand="lg">
+      <Container fluid className={styles.headerContainer}>
+        <div className={styles.headerLogo}>
+          <Navbar.Toggle aria-controls="offcanvasNavbar-expand-lg" />
 
-        <ul className="nav justify-content-center border-bottom">
-          <li className="nav-item">
-            <a className="nav-link text-secondary active" aria-current="page" href="#">
-              Trang Chủ
-            </a>
-          </li>
-          <li className="nav-item">
-            <a className="nav-link text-secondary" href="#">
-              Dịch Vụ
-            </a>
-          </li>
-          <li className="nav-item">
-            <a className="nav-link text-secondary" href="#">
-              Khuyến Mãi
-            </a>
-          </li>
-          <li className="nav-item">
-            <a className="nav-link text-secondary" href="#">
-              Đặt Lịch
-            </a>
-          </li>
-          <li className="nav-item">
-            <a className="nav-link text-secondary" href="#">
-              Liên Hệ
-            </a>
-          </li>
-        </ul>
-      </div>
-    </header>
+          <Navbar.Brand href="#">
+            <Image src={logo} alt="" width={130} height={100} />
+          </Navbar.Brand>
+          <span className={styles.headerSearchIcon}>Search</span>
+        </div>
+        <Navbar.Offcanvas
+          id="offcanvasNavbar-expand-lg"
+          aria-labelledby="offcanvasNavbarLabel-expand-lg"
+          placement="start"
+        >
+          <Offcanvas.Header closeButton>
+            <Offcanvas.Title id="offcanvasNavbarLabel-expand-lg">LOGO</Offcanvas.Title>
+          </Offcanvas.Header>
+          <Offcanvas.Body>
+            <Nav className={styles.headerMenu}>
+              <Nav.Link href="#trang-chu">Trang Chủ</Nav.Link>
+              <Nav.Link href="#dich-vu">Dịch Vụ</Nav.Link>
+              <Nav.Link href="#khuyen-mai">Khuyến Mãi</Nav.Link>
+              <Nav.Link href="#dat-lich">Đặt Lịch</Nav.Link>
+              <Nav.Link href="#lien-he">Liên Hệ</Nav.Link>
+            </Nav>
+          </Offcanvas.Body>
+        </Navbar.Offcanvas>
+      </Container>
+    </Navbar>
   );
 };
 
