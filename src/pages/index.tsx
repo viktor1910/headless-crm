@@ -9,12 +9,12 @@ import Services from '~/components/Services';
 import SlideWrapper from '~/components/SlideWrapper';
 
 interface HomeProps {
-  bannerMd: Array<{
+  bannerMd?: Array<{
     src: string;
     alt: string;
     title: string;
   }>;
-  bannerLg: Array<{
+  bannerLg?: Array<{
     src: string;
     alt: string;
     title: string;
