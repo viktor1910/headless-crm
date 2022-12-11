@@ -26,7 +26,9 @@ export default function Home({ bannerMd, bannerLg }: HomeProps) {
 
   return (
     <>
-      <div>{/* <Banner bannerLg={bannerLg} bannerMd={bannerMd} /> */}</div>
+      <div>
+        <Banner bannerLg={bannerLg} bannerMd={bannerMd} />
+      </div>
       <Container>
         <Section title="CHÀO MỪNG BẠN ĐẾN VỚI" subTitle="VIỆN THẨM MỸ NÂNG CƠ CÔNG NGHỆ CAO HÀNG ĐẦU CHÂU Á">
           <Text

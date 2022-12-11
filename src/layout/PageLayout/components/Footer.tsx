@@ -25,7 +25,7 @@ const Footer = () => {
             Công ty TNHH Shynh House
           </Text>
           <Text
-            type="body"
+            type="smallBody"
             style={{
               textAlign: 'center',
               color: '#666',
@@ -35,7 +35,7 @@ const Footer = () => {
             591 Sư Vạn Hạnh, Phường 13, Quận 10
           </Text>
           <Text
-            type="body"
+            type="smallBody"
             style={{
               textAlign: 'center',
               color: '#666',
@@ -48,11 +48,12 @@ const Footer = () => {
         <Col className={styles.footerMst}>
           <Image src={logo} objectFit="cover" alt="" width={140} height={110} />
           <Text
-            type="body"
+            type="smallBody"
             style={{
               textAlign: 'center',
               color: '#666',
               marginTop: '10px',
+              maxWidth: '300px',
             }}
           >
             Mã Số Thuế :111111111 do Sở Kế Hoạch đầu tư TP.HCM cấp ngày 13/02/2015
