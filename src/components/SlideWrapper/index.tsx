@@ -13,7 +13,6 @@ const SlideWrapper = () => {
     <Container fluid>
       <Row>
         <Col lg={6}>
-          {' '}
           <Carousel controls={false}>
             <Carousel.Item>
               <Image className="d-block w-100" src={sl1} alt="First slide" />
