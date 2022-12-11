@@ -9,12 +9,12 @@ import client from '~/apollo/client';
 import { GET_HOME_PAGE_IMAGE } from '~/apollo/queries/get-homepage-image';
 
 interface HomeProps {
-  bannerMd: Array<{
+  bannerMd?: Array<{
     src: string;
     alt: string;
     title: string;
   }>;
-  bannerLg: Array<{
+  bannerLg?: Array<{
     src: string;
     alt: string;
     title: string;
@@ -71,27 +71,27 @@ export default function Home({ bannerMd, bannerLg }: HomeProps) {
   );
 }
 
-export const getStaticProps: GetStaticProps = async context => {
-  const { data } = await client.query({
-    query: GET_HOME_PAGE_IMAGE,
-  });
-  const bannerMd = data.bannerMd.edges.map((edge: any) => {
-    return {
-      src: edge.node.sourceUrl,
-      alt: edge.node.altText,
-    };
-  });
-  const bannerLg = data.bannerLg.edges.map((edge: any) => {
-    return {
-      src: edge.node.sourceUrl,
-      alt: edge.node.altText,
-    };
-  });
+// export const getStaticProps: GetStaticProps = async context => {
+//   const { data } = await client.query({
+//     query: GET_HOME_PAGE_IMAGE,
+//   });
+//   const bannerMd = data.bannerMd.edges.map((edge: any) => {
+//     return {
+//       src: edge.node.sourceUrl,
+//       alt: edge.node.altText,
+//     };
+//   });
+//   const bannerLg = data.bannerLg.edges.map((edge: any) => {
+//     return {
+//       src: edge.node.sourceUrl,
+//       alt: edge.node.altText,
+//     };
+//   });
 
-  return {
-    props: {
-      bannerMd: bannerMd,
-      bannerLg: bannerLg,
-    },
-  };
-};
+//   return {
+//     props: {
+//       bannerMd: bannerMd,
+//       bannerLg: bannerLg,
+//     },
+//   };
+// };

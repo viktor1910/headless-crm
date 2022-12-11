@@ -4,11 +4,11 @@ import { Carousel } from 'react-bootstrap';
 import styles from './index.module.scss';
 
 interface CarouselProps {
-  bannerMd: Array<{
+  bannerMd?: Array<{
     src: string;
     alt: string;
   }>;
-  bannerLg: Array<{
+  bannerLg?: Array<{
     src: string;
     alt: string;
   }>;
@@ -19,7 +19,7 @@ const Banner = ({ bannerMd, bannerLg }: CarouselProps) => {
     <>
       <div className={styles.imageBanner}>
         <Carousel fade>
-          {bannerLg.map(image => (
+          {bannerLg?.map(image => (
             <Carousel.Item key={image.src} className={styles.carouselItem}>
               <div className={styles.image}>
                 <Image src={image.src} alt={image.alt} fill />
@@ -30,7 +30,7 @@ const Banner = ({ bannerMd, bannerLg }: CarouselProps) => {
       </div>
       <div className={styles.imageBannerMd}>
         <Carousel>
-          {bannerMd.map(image => (
+          {bannerMd?.map(image => (
             <Carousel.Item key={image.src}>
               <div className={styles.image}>
                 <Image src={image.src} alt={image.alt} fill />
