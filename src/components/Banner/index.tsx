@@ -1,6 +1,6 @@
 import React from 'react';
 import Image from 'next/image';
-import { Carousel } from 'react-bootstrap';
+import Slider from 'react-slick';
 import styles from './index.module.scss';
 
 interface CarouselProps {
@@ -15,29 +15,36 @@ interface CarouselProps {
 }
 
 const Banner = ({ bannerMd, bannerLg }: CarouselProps) => {
+  const settings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+  };
   return (
     <>
       <div className={styles.imageBanner}>
-        <Carousel fade>
+        <Slider {...settings}>
           {bannerLg?.map(image => (
-            <Carousel.Item key={image.src} className={styles.carouselItem}>
+            <div key={image.src} className={styles.carouselItem}>
               <div className={styles.image}>
                 <Image src={image.src} alt={image.alt} fill />
               </div>
-            </Carousel.Item>
+            </div>
           ))}
-        </Carousel>
+        </Slider>
       </div>
       <div className={styles.imageBannerMd}>
-        <Carousel>
+        <Slider {...settings}>
           {bannerMd?.map(image => (
-            <Carousel.Item key={image.src}>
+            <div key={image.src}>
               <div className={styles.image}>
                 <Image src={image.src} alt={image.alt} fill />
               </div>
-            </Carousel.Item>
+            </div>
           ))}
-        </Carousel>
+        </Slider>
       </div>
     </>
   );

@@ -40,8 +40,11 @@
   width: 100%;
   display: flex;
   align-items: center;
-  justify-content: space-around;
+  justify-content: space-between;
   text-align: center;
+  button {
+    border: none;
+  }
 
   @media screen and (max-width: 992px) {
     img {
@@ -75,6 +78,9 @@
   align-items: center;
   text-align: center;
   line-height: 2.5em;
+  @media screen and (max-width: 992px) {
+    display: none;
+  }
 }
 .footerForm {
   display: flex;
@@ -96,9 +102,10 @@
     border: none;
     border-radius: 0;
   }
-
   @media screen and (max-width: 992px) {
-    display: none;
+    Form {
+      width: 50%;
+    }
   }
 }
 .footerNameCompany {

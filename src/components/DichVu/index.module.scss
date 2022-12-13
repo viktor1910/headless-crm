@@ -1,0 +1,25 @@
+.slickSlider {
+  margin: 30px auto 50px;
+  padding: 0.5rem;
+  width: auto;
+  display: flex;
+  align-items: center;
+  img {
+    width: 100%;
+    object-fit: cover;
+  }
+}
+.card {
+  padding: 8px;
+  position: relative;
+  margin: 10px;
+  transition: all 0.3s ease-in-out;
+  z-index: 1;
+  text-align: center;
+  align-items: center;
+  &:hover {
+    background: #eccc80;
+    cursor: pointer;
+    // transform: translateY(-6px);
+  }
+}

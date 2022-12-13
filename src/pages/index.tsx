@@ -7,6 +7,8 @@ import client from '~/apollo/client';
 import { GET_HOME_PAGE_IMAGE } from '~/apollo/queries/get-homepage-image';
 import Services from '~/components/Services';
 import SlideWrapper from '~/components/SlideWrapper';
+import KhuyenMai from '~/components/KhuyenMai';
+import DichVu from '~/components/DichVu';
 
 interface HomeProps {
   bannerMd?: Array<{
@@ -67,33 +69,35 @@ export default function Home({ bannerMd, bannerLg }: HomeProps) {
           </Text>
         </Section>
       </Container>
+      <DichVu />
+      <KhuyenMai />
       <SlideWrapper />
       <Services />
     </>
   );
 }
 
-// export const getStaticProps: GetStaticProps = async context => {
-//   const { data } = await client.query({
-//     query: GET_HOME_PAGE_IMAGE,
-//   });
-//   const bannerMd = data.bannerMd.edges.map((edge: any) => {
-//     return {
-//       src: edge.node.sourceUrl,
-//       alt: edge.node.altText,
-//     };
-//   });
-//   const bannerLg = data.bannerLg.edges.map((edge: any) => {
-//     return {
-//       src: edge.node.sourceUrl,
-//       alt: edge.node.altText,
-//     };
-//   });
+export const getStaticProps: GetStaticProps = async context => {
+  const { data } = await client.query({
+    query: GET_HOME_PAGE_IMAGE,
+  });
+  const bannerMd = data.bannerMd.edges.map((edge: any) => {
+    return {
+      src: edge.node.sourceUrl,
+      alt: edge.node.altText,
+    };
+  });
+  const bannerLg = data.bannerLg.edges.map((edge: any) => {
+    return {
+      src: edge.node.sourceUrl,
+      alt: edge.node.altText,
+    };
+  });
 
-//   return {
-//     props: {
-//       bannerMd: bannerMd,
-//       bannerLg: bannerLg,
-//     },
-//   };
-// };
+  return {
+    props: {
+      bannerMd: bannerMd,
+      bannerLg: bannerLg,
+    },
+  };
+};
