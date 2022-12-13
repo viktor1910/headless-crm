@@ -1,5 +1,3 @@
-import { PageLayout } from '../layout/PageLayout';
-import { MainSlider } from './style';
 import Text from '~/components/Text';
 import Banner from '~/components/Banner';
 import { Container } from 'react-bootstrap';
@@ -7,6 +5,8 @@ import Section from '~/components/Section';
 import { GetStaticProps } from 'next';
 import client from '~/apollo/client';
 import { GET_HOME_PAGE_IMAGE } from '~/apollo/queries/get-homepage-image';
+import Services from '~/components/Services';
+import SlideWrapper from '~/components/SlideWrapper';
 
 interface HomeProps {
   bannerMd?: Array<{
@@ -25,10 +25,10 @@ export default function Home({ bannerMd, bannerLg }: HomeProps) {
   console.log('🚀 ~ file: index.tsx:25 ~ Home ~ bannerLg', bannerLg);
 
   return (
-    <PageLayout>
-      <MainSlider>
+    <>
+      <div>
         <Banner bannerLg={bannerLg} bannerMd={bannerMd} />
-      </MainSlider>
+      </div>
       <Container>
         <Section title="CHÀO MỪNG BẠN ĐẾN VỚI" subTitle="VIỆN THẨM MỸ NÂNG CƠ CÔNG NGHỆ CAO HÀNG ĐẦU CHÂU Á">
           <Text
@@ -67,7 +67,9 @@ export default function Home({ bannerMd, bannerLg }: HomeProps) {
           </Text>
         </Section>
       </Container>
-    </PageLayout>
+      <SlideWrapper />
+      <Services />
+    </>
   );
 }
 

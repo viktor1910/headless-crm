@@ -1,0 +1,113 @@
+//Header
+.headerContainer {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 2em;
+}
+.headerMenu {
+  display: flex;
+  width: 1030px;
+  height: 57px;
+  border-bottom: 1px solid gray;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  a {
+    font-size: 1.5rem;
+    margin: 15px;
+    &:hover {
+      border-bottom: 3px solid black;
+    }
+  }
+  @media screen and (max-width: 992px) {
+    display: flex;
+    width: 100%;
+    height: auto;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    border: none;
+  }
+}
+
+.headerSearchIcon {
+  @media screen and (min-width: 992px) {
+    display: none;
+  }
+}
+.headerLogo {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  text-align: center;
+
+  @media screen and (max-width: 992px) {
+    img {
+      max-width: 80px;
+      display: block;
+      margin: 0 auto;
+    }
+  }
+}
+
+//Footer
+.rowFooter {
+  background: #e6e6e6;
+  padding: 3em;
+}
+.footerAddress {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  line-height: 2.5em;
+  @media screen and (max-width: 992px) {
+    display: none;
+  }
+}
+.footerMst {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  line-height: 2.5em;
+}
+.footerForm {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  line-height: 2.5em;
+  Form {
+    width: 100%;
+  }
+  input {
+    border-radius: 0;
+  }
+  Button {
+    margin-top: 1em;
+    width: 100%;
+    background: #efefef;
+    border: none;
+    border-radius: 0;
+  }
+
+  @media screen and (max-width: 992px) {
+    display: none;
+  }
+}
+.footerNameCompany {
+  padding: 4em;
+  display: block;
+  text-align: center;
+  line-height: 2.5em;
+}
+.footerCopyright {
+  background-color: black;
+  padding: 2em;
+}

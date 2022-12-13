@@ -1,7 +1,7 @@
 import React from 'react';
-import Header from '../components/Header';
-import Footer from '~/components/Footer';
-import { AppContainer, AppLayout } from '../pages/style';
+import Header from './PageLayout/components/Header';
+import Footer from '~/layout/PageLayout/components/Footer';
+import styles from './DefaultLayout.module.scss';
 
 interface PageLayoutProps {
   children: React.ReactNode;
@@ -9,10 +9,10 @@ interface PageLayoutProps {
 
 export const PageLayout = ({ children }: PageLayoutProps) => {
   return (
-    <AppContainer>
+    <>
       <Header />
-      <AppLayout>{children}</AppLayout>
+      <main className={styles.mainContainer}> {children}</main>
       <Footer />
-    </AppContainer>
+    </>
   );
 };
