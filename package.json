@@ -16,7 +16,9 @@
     "react": "18.2.0",
     "react-bootstrap": "^2.6.0",
     "react-dom": "18.2.0",
+    "react-slick": "^0.29.0",
     "sass": "^1.56.1",
+    "slick-carousel": "^1.8.1",
     "styled-components": "^5.3.6"
   },
   "devDependencies": {
@@ -24,6 +26,7 @@
     "@types/react": "18.0.25",
     "@types/react-bootstrap": "^0.32.32",
     "@types/react-dom": "18.0.9",
+    "@types/react-slick": "^0.23.10",
     "@types/sass": "^1.43.1",
     "@types/styled-components": "^5.1.26",
     "eslint": "8.28.0",

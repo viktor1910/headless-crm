@@ -8,22 +8,17 @@ import sl1 from '../../../public/img/Artboard-2.png';
 import sl2 from '../../../public/img/Artboard-3.jpg';
 import sl3 from '../../../public/img/Artboard-4.png';
 import styles from './index.module.scss';
+import Slider from 'react-slick';
 const SlideWrapper = () => {
   return (
     <Container fluid>
       <Row>
         <Col lg={6}>
-          <Carousel controls={false}>
-            <Carousel.Item>
-              <Image className="d-block w-100" src={sl1} alt="First slide" />
-            </Carousel.Item>
-            <Carousel.Item>
-              <Image className="d-block w-100" src={sl2} alt="Second slide" />
-            </Carousel.Item>
-            <Carousel.Item>
-              <Image className="d-block w-100" src={sl3} alt="Third slide" />
-            </Carousel.Item>
-          </Carousel>
+          <Slider dots infinite speed={500} autoplay slidesToShow={1} slidesToScroll={1}>
+            <Image className="d-block w-100" src={sl1} alt="First slide" />
+            <Image className="d-block w-100" src={sl2} alt="Second slide" />
+            <Image className="d-block w-100" src={sl3} alt="Third slide" />
+          </Slider>
         </Col>
         <Col lg={6}>
           <div className={styles.mainService}>

@@ -46,7 +46,7 @@ const Footer = () => {
           </Text>
         </Col>
         <Col className={styles.footerMst}>
-          <Image src={logo} objectFit="cover" alt="" width={140} height={110} />
+          <Image src={logo} alt="" width={140} height={110} />
           <Text
             type="smallBody"
             style={{
