@@ -1,10 +1,10 @@
+//banner
 .imageBanner {
   display: none;
   @media screen and (min-width: 992px) {
     display: block;
   }
 }
-
 .imageBannerMd {
   display: block;
   @media screen and (min-width: 992px) {
@@ -27,4 +27,3 @@
     height: auto !important;
   }
 }
-

@@ -5,8 +5,7 @@ import Section from '~/components/Section';
 import { GetStaticProps } from 'next';
 import client from '~/apollo/client';
 import { GET_HOME_PAGE_IMAGE } from '~/apollo/queries/get-homepage-image';
-import Services from '~/components/Services';
-import SlideWrapper from '~/components/SlideWrapper';
+import TrangChu from '~/components/TrangChu';
 import KhuyenMai from '~/components/KhuyenMai';
 import DichVu from '~/components/DichVu';
 
@@ -28,9 +27,7 @@ export default function Home({ bannerMd, bannerLg }: HomeProps) {
 
   return (
     <>
-      <div>
-        <Banner bannerLg={bannerLg} bannerMd={bannerMd} />
-      </div>
+      <div>{/* <Banner bannerLg={bannerLg} bannerMd={bannerMd} /> */}</div>
       <Container>
         <Section title="CHÀO MỪNG BẠN ĐẾN VỚI" subTitle="VIỆN THẨM MỸ NÂNG CƠ CÔNG NGHỆ CAO HÀNG ĐẦU CHÂU Á">
           <Text
@@ -69,35 +66,34 @@ export default function Home({ bannerMd, bannerLg }: HomeProps) {
           </Text>
         </Section>
       </Container>
-      <DichVu />
-      <KhuyenMai />
-      <SlideWrapper />
-      <Services />
+      <TrangChu />
+      {/* <DichVu /> */}
+      {/* <KhuyenMai /> */}
     </>
   );
 }
 
-export const getStaticProps: GetStaticProps = async context => {
-  const { data } = await client.query({
-    query: GET_HOME_PAGE_IMAGE,
-  });
-  const bannerMd = data.bannerMd.edges.map((edge: any) => {
-    return {
-      src: edge.node.sourceUrl,
-      alt: edge.node.altText,
-    };
-  });
-  const bannerLg = data.bannerLg.edges.map((edge: any) => {
-    return {
-      src: edge.node.sourceUrl,
-      alt: edge.node.altText,
-    };
-  });
+// export const getStaticProps: GetStaticProps = async context => {
+//   const { data } = await client.query({
+//     query: GET_HOME_PAGE_IMAGE,
+//   });
+//   const bannerMd = data.bannerMd.edges.map((edge: any) => {
+//     return {
+//       src: edge.node.sourceUrl,
+//       alt: edge.node.altText,
+//     };
+//   });
+//   const bannerLg = data.bannerLg.edges.map((edge: any) => {
+//     return {
+//       src: edge.node.sourceUrl,
+//       alt: edge.node.altText,
+//     };
+//   });
 
-  return {
-    props: {
-      bannerMd: bannerMd,
-      bannerLg: bannerLg,
-    },
-  };
-};
+//   return {
+//     props: {
+//       bannerMd: bannerMd,
+//       bannerLg: bannerLg,
+//     },
+//   };
+// };
