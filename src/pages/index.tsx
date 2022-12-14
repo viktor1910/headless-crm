@@ -3,8 +3,6 @@ import Banner from '~/components/Banner';
 import { Container } from 'react-bootstrap';
 import Section from '~/components/Section';
 import { GetStaticProps } from 'next';
-import client from '~/apollo/client';
-import { GET_HOME_PAGE_IMAGE } from '~/apollo/queries/get-homepage-image';
 import TrangChu from '~/components/TrangChu';
 import KhuyenMai from '~/components/KhuyenMai';
 import DichVu from '~/components/DichVu';
@@ -23,8 +21,6 @@ interface HomeProps {
 }
 
 export default function Home({ bannerMd, bannerLg }: HomeProps) {
-  console.log('🚀 ~ file: index.tsx:25 ~ Home ~ bannerLg', bannerLg);
-
   return (
     <>
       <div>{/* <Banner bannerLg={bannerLg} bannerMd={bannerMd} /> */}</div>
@@ -72,28 +68,3 @@ export default function Home({ bannerMd, bannerLg }: HomeProps) {
     </>
   );
 }
-
-// export const getStaticProps: GetStaticProps = async context => {
-//   const { data } = await client.query({
-//     query: GET_HOME_PAGE_IMAGE,
-//   });
-//   const bannerMd = data.bannerMd.edges.map((edge: any) => {
-//     return {
-//       src: edge.node.sourceUrl,
-//       alt: edge.node.altText,
-//     };
-//   });
-//   const bannerLg = data.bannerLg.edges.map((edge: any) => {
-//     return {
-//       src: edge.node.sourceUrl,
-//       alt: edge.node.altText,
-//     };
-//   });
-
-//   return {
-//     props: {
-//       bannerMd: bannerMd,
-//       bannerLg: bannerLg,
-//     },
-//   };
-// };
