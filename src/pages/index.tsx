@@ -2,22 +2,17 @@ import Text from '~/components/Text';
 import Banner from '~/components/Banner';
 import { Container } from 'react-bootstrap';
 import Section from '~/components/Section';
-import { GetStaticProps } from 'next';
+
 import TrangChu from '~/components/TrangChu';
 import KhuyenMai from '~/components/KhuyenMai';
 import DichVu from '~/components/DichVu';
+import axiosWrapper from '~/services/axiosConfig';
+import { ImagesAPIResponse, ImagesModel } from '~/@types/Banner';
+import { getBannerImage } from '~/services/util';
 
 interface HomeProps {
-  bannerMd?: Array<{
-    src: string;
-    alt: string;
-    title: string;
-  }>;
-  bannerLg?: Array<{
-    src: string;
-    alt: string;
-    title: string;
-  }>;
+  bannerMd?: ImagesModel[];
+  bannerLg?: ImagesModel[];
 }
 
 export default function Home({ bannerMd, bannerLg }: HomeProps) {
@@ -68,3 +63,21 @@ export default function Home({ bannerMd, bannerLg }: HomeProps) {
     </>
   );
 }
+
+export const getStaticProps = async () => {
+  // const res = await axiosWrapper.get<ImagesAPIResponse[]>('/hinh-anh').then(res => res.data);
+
+  // const bannerDesktop = res.find(i => i.slug === 'banner-desktop');
+  // const bannerMobile = res.find(i => i.slug === 'banner-mobile');
+
+  // const resultBannerDesktop = bannerDesktop ? getBannerImage(bannerDesktop) : [];
+
+  // const resultBannerMobile = bannerMobile ? getBannerImage(bannerMobile) : [];
+
+  return {
+    props: {
+      bannerMd: [],
+      bannerLg: [],
+    },
+  };
+};
