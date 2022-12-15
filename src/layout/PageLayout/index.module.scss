@@ -64,7 +64,11 @@
 //Footer
 .rowFooter {
   background: #e6e6e6;
-  padding: 3em;
+  padding: 1em;
+  display: block;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
 }
 .footerAddress {
   display: flex;
@@ -108,12 +112,8 @@
     border: none;
     border-radius: 0;
   }
-  @media screen and (max-width: 992px) {
-    Form {
-      width: 50%;
-    }
-  }
 }
+
 .footerNameCompany {
   padding: 4em;
   display: block;

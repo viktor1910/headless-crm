@@ -131,15 +131,15 @@ const TrangChu = () => {
             margin: '20px auto',
           }}
         />
-        <Row className={styles.service}>
+        <Row className={styles.rowService}>
           <Col lg={4} md={12}>
-            <Row xs={2} md={2} className="g-2">
+            <Row xs={2}>
               <Col lg={6} className={styles.colServices}>
                 <Card className={styles.cardServices}>
                   <Image src={demoImage} alt="" width={200} height={250} />
                   <Card.Body>
                     <Text
-                      type="smallBody"
+                      type="title"
                       style={{
                         textAlign: 'center',
                         color: '#666',
@@ -147,7 +147,43 @@ const TrangChu = () => {
                         marginBottom: '.5em',
                       }}
                     >
-                      Some quick example text
+                      Some quick example text 1
+                    </Text>
+                  </Card.Body>
+                </Card>
+              </Col>
+              <Col lg={6}>
+                <Card className={styles.cardServices}>
+                  <Image src={demoImage} alt="" width={200} height={250} />
+                  <Card.Body>
+                    <Text
+                      type="title"
+                      style={{
+                        textAlign: 'center',
+                        color: '#666',
+                        marginTop: '10px',
+                        marginBottom: '.5em',
+                      }}
+                    >
+                      Some quick example text 1
+                    </Text>
+                  </Card.Body>
+                </Card>
+              </Col>
+              <Col lg={6}>
+                <Card className={styles.cardServices}>
+                  <Image src={demoImage} alt="" width={200} height={250} />
+                  <Card.Body>
+                    <Text
+                      type="title"
+                      style={{
+                        textAlign: 'center',
+                        color: '#666',
+                        marginTop: '10px',
+                        marginBottom: '.5em',
+                      }}
+                    >
+                      Some quick example text 1
                     </Text>
                   </Card.Body>
                 </Card>
@@ -157,7 +193,7 @@ const TrangChu = () => {
                   <Image src={demoImage} alt="" width={200} height={250} />
                   <Card.Body>
                     <Text
-                      type="smallBody"
+                      type="title"
                       style={{
                         textAlign: 'center',
                         color: '#666',
@@ -165,43 +201,7 @@ const TrangChu = () => {
                         marginBottom: '.5em',
                       }}
                     >
-                      Some quick example text
-                    </Text>
-                  </Card.Body>
-                </Card>
-              </Col>
-              <Col lg={6} className={styles.colServices}>
-                <Card className={styles.cardServices}>
-                  <Image src={demoImage} alt="" width={200} height={250} />
-                  <Card.Body>
-                    <Text
-                      type="smallBody"
-                      style={{
-                        textAlign: 'center',
-                        color: '#666',
-                        marginTop: '10px',
-                        marginBottom: '.5em',
-                      }}
-                    >
-                      Some quick example text
-                    </Text>
-                  </Card.Body>
-                </Card>
-              </Col>
-              <Col lg={6} className={styles.colServices}>
-                <Card className={styles.cardServices}>
-                  <Image src={demoImage} alt="" width={200} height={250} />
-                  <Card.Body>
-                    <Text
-                      type="smallBody"
-                      style={{
-                        textAlign: 'center',
-                        color: '#666',
-                        marginTop: '10px',
-                        marginBottom: '.5em',
-                      }}
-                    >
-                      Some quick example text
+                      Some quick example text 1
                     </Text>
                   </Card.Body>
                 </Card>
@@ -209,18 +209,36 @@ const TrangChu = () => {
             </Row>
           </Col>
           <Col lg={4} className={styles.colImage}>
-            <Row className={styles.rowImage}>
+            <Row>
               <Image src={imgCenter} alt="" />
             </Row>
           </Col>
           <Col lg={4} md={12}>
-            <Row xs={2} md={2} className="g-2">
+            <Row xs={2}>
               <Col lg={6} className={styles.colServices}>
                 <Card className={styles.cardServices}>
                   <Image src={demoImage} alt="" width={200} height={250} />
                   <Card.Body>
                     <Text
-                      type="smallBody"
+                      type="title"
+                      style={{
+                        textAlign: 'center',
+                        color: '#666',
+                        marginTop: '10px',
+                        marginBottom: '.5em',
+                      }}
+                    >
+                      Some quick example text 2
+                    </Text>
+                  </Card.Body>
+                </Card>
+              </Col>
+              <Col lg={6}>
+                <Card className={styles.cardServices}>
+                  <Image src={demoImage} alt="" width={200} height={250} />
+                  <Card.Body>
+                    <Text
+                      type="title"
                       style={{
                         textAlign: 'center',
                         color: '#666',
@@ -238,7 +256,7 @@ const TrangChu = () => {
                   <Image src={demoImage} alt="" width={200} height={250} />
                   <Card.Body>
                     <Text
-                      type="smallBody"
+                      type="title"
                       style={{
                         textAlign: 'center',
                         color: '#666',
@@ -251,30 +269,12 @@ const TrangChu = () => {
                   </Card.Body>
                 </Card>
               </Col>
-              <Col lg={6} className={styles.colServices}>
+              <Col lg={6}>
                 <Card className={styles.cardServices}>
                   <Image src={demoImage} alt="" width={200} height={250} />
                   <Card.Body>
                     <Text
-                      type="smallBody"
-                      style={{
-                        textAlign: 'center',
-                        color: '#666',
-                        marginTop: '10px',
-                        marginBottom: '.5em',
-                      }}
-                    >
-                      Some quick example text 2
-                    </Text>
-                  </Card.Body>
-                </Card>
-              </Col>
-              <Col lg={6} className={styles.colServices}>
-                <Card className={styles.cardServices}>
-                  <Image src={demoImage} alt="" width={200} height={250} />
-                  <Card.Body>
-                    <Text
-                      type="smallBody"
+                      type="title"
                       style={{
                         textAlign: 'center',
                         color: '#666',

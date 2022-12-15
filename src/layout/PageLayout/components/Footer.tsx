@@ -13,7 +13,7 @@ const Footer = () => {
   return (
     <Container fluid>
       <Row className={styles.rowFooter}>
-        <Col className={styles.footerAddress}>
+        <Col lg={4} sm={6} className={styles.footerAddress}>
           <Text
             type="title"
             style={{
@@ -45,7 +45,7 @@ const Footer = () => {
             Email:cskh@shynhpremium.vn | 1900989800
           </Text>
         </Col>
-        <Col className={styles.footerMst}>
+        <Col lg={4} sm={6} className={styles.footerMst}>
           <Image src={logo} alt="" width={140} height={110} />
           <Text
             type="smallBody"
@@ -59,7 +59,7 @@ const Footer = () => {
             Mã Số Thuế :111111111 do Sở Kế Hoạch đầu tư TP.HCM cấp ngày 13/02/2015
           </Text>
         </Col>
-        <Col className={styles.footerForm}>
+        <Col lg={4} sm={6} className={styles.footerForm}>
           <Text
             type="title"
             style={{
@@ -72,13 +72,13 @@ const Footer = () => {
             Đăng Ký Nhận Khuyến Mãi
           </Text>
           <Form>
-            <InputGroup className={styles.inputFooter}>
-              <Form.Control placeholder="Please enter your name..." aria-label="Please enter your name..." />
+            <InputGroup>
+              <Form.Control placeholder="Please enter your name..." />
               <InputGroup.Text id="basic-addon2">@</InputGroup.Text>
             </InputGroup>
 
             <InputGroup>
-              <Form.Control placeholder="Please enter your phone number" aria-label="Please enter your phone number" />
+              <Form.Control placeholder="Please enter your phone number" />
               <InputGroup.Text id="basic-addon2">@</InputGroup.Text>
             </InputGroup>
 

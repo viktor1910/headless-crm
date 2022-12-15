@@ -27,11 +27,17 @@
     position: relative;
   }
   @media screen and (max-width: 992px) {
+    p {
+      font-size: 0.8em;
+    }
+    strong {
+      font-size: 1.7rem;
+    }
   }
 }
 
 //
-.service {
+.rowService {
   padding: 40px 0px;
   display: flex;
   text-align: center;
@@ -42,6 +48,10 @@
   @media screen and (max-width: 992px) {
     display: none;
   }
+}
+
+.colServices {
+  padding-bottom: 0.5em;
 }
 .cardServices {
   padding: 1rem 0.5rem;
@@ -54,6 +64,11 @@
   }
   &:hover {
     cursor: pointer;
+  }
+  @media screen and (max-width: 992px) {
+    p {
+      font-size: 18px;
+    }
   }
 }
 //card slider
@@ -91,4 +106,10 @@
   height: auto;
   margin: 1rem 0 0 0;
   padding: 2rem;
+  @media screen and (max-width: 992px) {
+    box-shadow: none;
+    p {
+      font-size: 12px;
+    }
+  }
 }
