@@ -152,7 +152,7 @@ const TrangChu = () => {
                   </Card.Body>
                 </Card>
               </Col>
-              <Col lg={6}>
+              <Col lg={6} style={{ padding: '0' }}>
                 <Card className={styles.cardServices}>
                   <Image src={demoImage} alt="" width={200} height={250} />
                   <Card.Body>
