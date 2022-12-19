@@ -92,7 +92,7 @@ const TrangChu = () => {
     <>
       <Container fluid>
         <Row>
-          <Col lg={6}>
+          <Col lg={6} className={styles.textReview}>
             <Slider {...settings} className={styles.customReview}>
               <Image src={sl1} alt="First slide" />
 
@@ -101,18 +101,34 @@ const TrangChu = () => {
               <Image src={sl3} alt="Third slide" />
             </Slider>
           </Col>
-          <Col lg={6}>
-            <div className={styles.textReview}>
-              <p>
-                <strong>5</strong>Chi Nhánh Tại TP.HCM,Hà Nội,Đà Nẵng
-              </p>
-              <p>
-                <strong>100+</strong>Dịch Vụ Làm Đẹp Hàng Đầu
-              </p>
-              <p>
-                <strong>1.000.000+</strong>Lượt Khách Mỗi Năm
-              </p>
-            </div>
+          <Col lg={6} className={styles.textReview}>
+            <Text
+              type="body"
+              style={{
+                textAlign: 'center',
+                color: '#333',
+              }}
+            >
+              <strong>5</strong>Chi Nhánh Tại TP.HCM,Hà Nội,Đà Nẵng
+            </Text>
+            <Text
+              type="body"
+              style={{
+                textAlign: 'center',
+                color: '#333',
+              }}
+            >
+              <strong>100+</strong>Dịch Vụ Làm Đẹp Hàng Đầu
+            </Text>
+            <Text
+              type="body"
+              style={{
+                textAlign: 'center',
+                color: '#333',
+              }}
+            >
+              <strong>1.000.000+</strong>Lượt Khách Mỗi Năm
+            </Text>
           </Col>
         </Row>
         <Text
@@ -134,10 +150,10 @@ const TrangChu = () => {
         <Row className={styles.rowService}>
           <Col lg={4} md={12}>
             <Row xs={2}>
-              <Col lg={6} className={styles.colServices}>
+              <Col lg={6} style={{ padding: '0' }} className={styles.colServices}>
                 <Card className={styles.cardServices}>
-                  <Image src={demoImage} alt="" width={200} height={250} />
-                  <Card.Body>
+                  <Image src={demoImage} alt="" width={200} height={250} style={{ padding: '10px 5px' }} />
+                  <Card.Body style={{ padding: '0' }}>
                     <Text
                       type="title"
                       style={{
@@ -154,8 +170,8 @@ const TrangChu = () => {
               </Col>
               <Col lg={6} style={{ padding: '0' }}>
                 <Card className={styles.cardServices}>
-                  <Image src={demoImage} alt="" width={200} height={250} />
-                  <Card.Body>
+                  <Image src={demoImage} alt="" width={200} height={250} style={{ padding: '10px 5px' }} />
+                  <Card.Body style={{ padding: '0' }}>
                     <Text
                       type="title"
                       style={{
@@ -170,10 +186,10 @@ const TrangChu = () => {
                   </Card.Body>
                 </Card>
               </Col>
-              <Col lg={6}>
+              <Col lg={6} style={{ padding: '0' }}>
                 <Card className={styles.cardServices}>
-                  <Image src={demoImage} alt="" width={200} height={250} />
-                  <Card.Body>
+                  <Image src={demoImage} alt="" width={200} height={250} style={{ padding: '10px 5px' }} />
+                  <Card.Body style={{ padding: '0' }}>
                     <Text
                       type="title"
                       style={{
@@ -188,10 +204,10 @@ const TrangChu = () => {
                   </Card.Body>
                 </Card>
               </Col>
-              <Col lg={6} className={styles.colServices}>
+              <Col lg={6} className={styles.colServices} style={{ padding: '0' }}>
                 <Card className={styles.cardServices}>
-                  <Image src={demoImage} alt="" width={200} height={250} />
-                  <Card.Body>
+                  <Image src={demoImage} alt="" width={200} height={250} style={{ padding: '10px 5px' }} />
+                  <Card.Body style={{ padding: '0' }}>
                     <Text
                       type="title"
                       style={{
@@ -215,10 +231,10 @@ const TrangChu = () => {
           </Col>
           <Col lg={4} md={12}>
             <Row xs={2}>
-              <Col lg={6} className={styles.colServices}>
+              <Col lg={6} style={{ padding: '0' }} className={styles.colServices}>
                 <Card className={styles.cardServices}>
-                  <Image src={demoImage} alt="" width={200} height={250} />
-                  <Card.Body>
+                  <Image src={demoImage} alt="" width={200} height={250} style={{ padding: '10px 5px' }} />
+                  <Card.Body style={{ padding: '0' }}>
                     <Text
                       type="title"
                       style={{
@@ -228,15 +244,15 @@ const TrangChu = () => {
                         marginBottom: '.5em',
                       }}
                     >
-                      Some quick example text 2
+                      Some quick example text 1
                     </Text>
                   </Card.Body>
                 </Card>
               </Col>
-              <Col lg={6}>
+              <Col lg={6} style={{ padding: '0' }}>
                 <Card className={styles.cardServices}>
-                  <Image src={demoImage} alt="" width={200} height={250} />
-                  <Card.Body>
+                  <Image src={demoImage} alt="" width={200} height={250} style={{ padding: '10px 5px' }} />
+                  <Card.Body style={{ padding: '0' }}>
                     <Text
                       type="title"
                       style={{
@@ -246,15 +262,15 @@ const TrangChu = () => {
                         marginBottom: '.5em',
                       }}
                     >
-                      Some quick example text 2
+                      Some quick example text 1
                     </Text>
                   </Card.Body>
                 </Card>
               </Col>
-              <Col lg={6} className={styles.colServices}>
+              <Col lg={6} style={{ padding: '0' }}>
                 <Card className={styles.cardServices}>
-                  <Image src={demoImage} alt="" width={200} height={250} />
-                  <Card.Body>
+                  <Image src={demoImage} alt="" width={200} height={250} style={{ padding: '10px 5px' }} />
+                  <Card.Body style={{ padding: '0' }}>
                     <Text
                       type="title"
                       style={{
@@ -264,15 +280,15 @@ const TrangChu = () => {
                         marginBottom: '.5em',
                       }}
                     >
-                      Some quick example text 2
+                      Some quick example text 1
                     </Text>
                   </Card.Body>
                 </Card>
               </Col>
-              <Col lg={6}>
+              <Col lg={6} className={styles.colServices} style={{ padding: '0' }}>
                 <Card className={styles.cardServices}>
-                  <Image src={demoImage} alt="" width={200} height={250} />
-                  <Card.Body>
+                  <Image src={demoImage} alt="" width={200} height={250} style={{ padding: '10px 5px' }} />
+                  <Card.Body style={{ padding: '0' }}>
                     <Text
                       type="title"
                       style={{
@@ -282,7 +298,7 @@ const TrangChu = () => {
                         marginBottom: '.5em',
                       }}
                     >
-                      Some quick example text 2
+                      Some quick example text 1
                     </Text>
                   </Card.Body>
                 </Card>
@@ -335,7 +351,7 @@ const TrangChu = () => {
             <Slider {...simpleSlider}>
               <div className={styles.cardSlider}>
                 <Row>
-                  <Col lg={8} sm={12} className={styles.cardServices}>
+                  <Col lg={8} sm={12} className={styles.cardCustomer}>
                     <Image src={imgCol} alt="" />
                   </Col>
                   <Col lg={4} sm={12}>
@@ -382,7 +398,7 @@ const TrangChu = () => {
               </div>
               <div className={styles.cardSlider}>
                 <Row>
-                  <Col lg={8} sm={12} className={styles.cardServices}>
+                  <Col lg={8} sm={12} className={styles.cardCustomer}>
                     <Image src={imgCol} alt="" />
                   </Col>
                   <Col lg={4} sm={12}>

@@ -29,8 +29,8 @@ const Header = () => {
           <Offcanvas.Body>
             <Nav className={styles.headerMenu}>
               <Nav.Link href="#trang-chu">Trang Chủ</Nav.Link>
-              <Nav.Link href="#dich-vu">Dịch Vụ</Nav.Link>
-              <Nav.Link href="#khuyen-mai">Khuyến Mãi</Nav.Link>
+              <Nav.Link href="dich-vu">Dịch Vụ</Nav.Link>
+              <Nav.Link href="khuyen-mai">Khuyến Mãi</Nav.Link>
               <Nav.Link href="#dat-lich">Đặt Lịch</Nav.Link>
               <Nav.Link href="#lien-he">Liên Hệ</Nav.Link>
             </Nav>

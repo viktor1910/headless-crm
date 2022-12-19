@@ -51,15 +51,15 @@ const DichVu = () => {
     dots: true,
     infinite: false,
     speed: 500,
-    slidesToShow: 4,
+    slidesToShow: 3,
     slidesToScroll: 3,
     initialSlide: 0,
     responsive: [
       {
         breakpoint: 1024,
         settings: {
-          slidesToShow: 4,
-          slidesToScroll: 4,
+          slidesToShow: 3,
+          slidesToScroll: 3,
           infinite: true,
           dots: true,
         },
@@ -320,9 +320,11 @@ const DichVu = () => {
 
       <Section title="Dịch Vụ" subTitle="">
         <Row>
-          <Col lg={4}>
-            <Card className={styles.cardPremium}>
-              <Image src={demoPremium} alt="" width={400} height={250} />
+          <Col xl={4} lg={6} sm={6}>
+            <Card style={{ border: 'none' }} className={styles.cardPremium}>
+              <div className={styles.borderImg}>
+                <Image src={demoPremium} alt="" width={400} height={250} />
+              </div>
               <Card.Body>
                 <Text
                   type="title"
@@ -335,13 +337,17 @@ const DichVu = () => {
                 >
                   Detox Skin thải độc hồi sinh làn da khỏe
                 </Text>
-                <Button variant="secondary">Xem Thêm</Button>
+                <Button variant="outline-secondary" size="lg">
+                  Xem Thêm
+                </Button>
               </Card.Body>
             </Card>
           </Col>
-          <Col lg={4}>
-            <Card className={styles.cardPremium}>
-              <Image src={demoPremium} alt="" width={400} height={250} />
+          <Col xl={4} lg={6} sm={6}>
+            <Card style={{ border: 'none' }} className={styles.cardPremium}>
+              <div className={styles.borderImg}>
+                <Image src={demoPremium} alt="" width={400} height={250} />
+              </div>
               <Card.Body>
                 <Text
                   type="title"
@@ -354,13 +360,17 @@ const DichVu = () => {
                 >
                   Detox Skin thải độc hồi sinh làn da khỏe
                 </Text>
-                <Button variant="secondary">Xem Thêm</Button>
+                <Button variant="outline-secondary" size="lg">
+                  Xem Thêm
+                </Button>
               </Card.Body>
             </Card>
           </Col>
-          <Col lg={4}>
-            <Card className={styles.cardPremium}>
-              <Image src={demoPremium} alt="" width={400} height={250} />
+          <Col xl={4} lg={6} sm={6}>
+            <Card style={{ border: 'none' }} className={styles.cardPremium}>
+              <div className={styles.borderImg}>
+                <Image src={demoPremium} alt="" width={400} height={250} />
+              </div>
               <Card.Body>
                 <Text
                   type="title"
@@ -373,13 +383,17 @@ const DichVu = () => {
                 >
                   Detox Skin thải độc hồi sinh làn da khỏe
                 </Text>
-                <Button variant="secondary">Xem Thêm</Button>
+                <Button variant="outline-secondary" size="lg">
+                  Xem Thêm
+                </Button>
               </Card.Body>
             </Card>
           </Col>
-          <Col lg={4}>
-            <Card className={styles.cardPremium}>
-              <Image src={demoPremium} alt="" width={400} height={250} />
+          <Col xl={4} lg={6} sm={6}>
+            <Card style={{ border: 'none' }} className={styles.cardPremium}>
+              <div className={styles.borderImg}>
+                <Image src={demoPremium} alt="" width={400} height={250} />
+              </div>
               <Card.Body>
                 <Text
                   type="title"
@@ -392,13 +406,17 @@ const DichVu = () => {
                 >
                   Detox Skin thải độc hồi sinh làn da khỏe
                 </Text>
-                <Button variant="secondary">Xem Thêm</Button>
+                <Button variant="outline-secondary" size="lg">
+                  Xem Thêm
+                </Button>
               </Card.Body>
             </Card>
           </Col>
-          <Col lg={4}>
-            <Card className={styles.cardPremium}>
-              <Image src={demoPremium} alt="" width={400} height={250} />
+          <Col xl={4} lg={6} sm={6}>
+            <Card style={{ border: 'none' }} className={styles.cardPremium}>
+              <div className={styles.borderImg}>
+                <Image src={demoPremium} alt="" width={400} height={250} />
+              </div>
               <Card.Body>
                 <Text
                   type="title"
@@ -411,13 +429,17 @@ const DichVu = () => {
                 >
                   Detox Skin thải độc hồi sinh làn da khỏe
                 </Text>
-                <Button variant="secondary">Xem Thêm</Button>
+                <Button variant="outline-secondary" size="lg">
+                  Xem Thêm
+                </Button>
               </Card.Body>
             </Card>
           </Col>
-          <Col lg={4}>
-            <Card className={styles.cardPremium}>
-              <Image src={demoPremium} alt="" width={400} height={250} />
+          <Col xl={4} lg={6} sm={6}>
+            <Card style={{ border: 'none' }} className={styles.cardPremium}>
+              <div className={styles.borderImg}>
+                <Image src={demoPremium} alt="" width={400} height={250} />
+              </div>
               <Card.Body>
                 <Text
                   type="title"
@@ -430,7 +452,9 @@ const DichVu = () => {
                 >
                   Detox Skin thải độc hồi sinh làn da khỏe
                 </Text>
-                <Button variant="secondary">Xem Thêm</Button>
+                <Button variant="outline-secondary" size="lg">
+                  Xem Thêm
+                </Button>
               </Card.Body>
             </Card>
           </Col>

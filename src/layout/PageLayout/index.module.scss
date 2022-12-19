@@ -45,14 +45,12 @@
   button {
     border: none;
   }
-  @media screen and (max-width: 992px) {
+
+  @media only screen and (max-width: 992px) {
     display: flex;
     align-items: center;
     justify-content: space-between;
     text-align: center;
-  }
-
-  @media screen and (max-width: 992px) {
     img {
       max-width: 80px;
       display: block;
