@@ -8,7 +8,6 @@ import Card from 'react-bootstrap/Card';
 import Image from 'next/image';
 import demoImage from '../../../public/img/demoImage.png';
 import demoPremium from '../../../public/img/premium.jpg';
-
 import Button from 'react-bootstrap/Button';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
