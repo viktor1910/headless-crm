@@ -1,0 +1,38 @@
+.wrapperDatLich {
+  height: 666px;
+  position: relative;
+  padding: 1rem;
+  margin: 1rem;
+}
+.imageWrapper {
+  display: flex;
+  justify-content: flex-center;
+  width: 50%;
+  height: 350px;
+  border: 7px solid#eccc80;
+}
+.image1 {
+  display: flex;
+  justify-content: flex-start;
+  z-index: 3;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.image2 {
+  display: flex;
+  justify-content: center;
+  margin-top: 25%;
+  z-index: 1;
+}
+.image3 {
+  display: flex;
+  justify-content: flex-end;
+  z-index: 2;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
+.form-control {
+  border: none;
+}
