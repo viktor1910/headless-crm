@@ -36,3 +36,24 @@
 .form-control {
   border: none;
 }
+@media only screen and (max-width: 992px) {
+  .displayRow {
+    display: flex;
+    flex-direction: column-reverse;
+  }
+}
+.displayCol {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+@media only screen and (max-width: 480px) {
+  .image3,
+  .image2 {
+    display: none;
+  }
+}
+.wrapperCol {
+  display: block;
+  justify-content: center;
+}

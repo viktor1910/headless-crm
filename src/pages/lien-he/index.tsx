@@ -38,7 +38,7 @@ const LienHe = () => {
                 style={{
                   textAlign: 'center',
                   color: '#666',
-                  marginTop: '10px',
+                  marginTop: '2rem',
                   marginBottom: '.5em',
                 }}
               >
@@ -165,26 +165,28 @@ const LienHe = () => {
               style={{
                 textAlign: 'center',
                 color: '#666',
-                marginTop: '10px',
-                marginBottom: '.5em',
+                marginTop: '2rem',
+                marginBottom: '1rem',
               }}
             >
               Nhận Thông Tin Khuyến Mãi & Góp Ý Dịch Vụ
             </Text>
-            <Form>
-              <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+            <Form className="text-center">
+              <Form.Group className="mb-4" controlId="exampleForm.ControlInput1">
                 <Form.Control type="text" placeholder="Họ Và Tên" />
               </Form.Group>
-              <Form.Group className="mb-3" controlId="exampleForm.ControlInput2">
+              <Form.Group className="mb-4" controlId="exampleForm.ControlInput2">
                 <Form.Control type="text" placeholder="Số Điện Thoại" />
               </Form.Group>
-              <Form.Group className="mb-3" controlId="exampleForm.ControlInput3">
+              <Form.Group className="mb-4" controlId="exampleForm.ControlInput3">
                 <Form.Control type="email" placeholder="Email" />
               </Form.Group>
-              <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
+              <Form.Group className="mb-4" controlId="exampleForm.ControlTextarea1">
                 <Form.Control as="textarea" placeholder="Nội Dung" rows={3} />
               </Form.Group>
-              <Button variant="outline-secondary">Đăng Ký</Button>
+              <Button className="mb-4" variant="outline-secondary">
+                Đăng Ký
+              </Button>
             </Form>
           </Col>
         </Row>

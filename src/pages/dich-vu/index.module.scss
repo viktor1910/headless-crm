@@ -9,7 +9,7 @@
       font-size: 22px;
     }
     .cardItem {
-      height: 250px;
+      height: 300px;
     }
   }
   @media screen and (max-width: 768px) {
@@ -22,7 +22,7 @@
   }
 }
 .cardItem {
-  width: calc(100% - 15px);
+  width: calc(100% - 25px);
   padding: 8px;
   position: relative;
   margin: 10px;
@@ -41,11 +41,6 @@
   }
 }
 
-// @media screen and (min-width: 992px) {
-//   .cardItem {
-//     height: 200px;
-//   }
-// }
 .cardPremium {
   padding: 8px;
   position: relative;
@@ -54,11 +49,12 @@
   z-index: 1;
   text-align: center;
   align-items: center;
+
   &:hover {
-    background: #eccc80;
+    color: #eccc80;
     cursor: pointer;
-    transform: translateY(-6px);
   }
+
   img {
     width: 100%;
     object-fit: cover;
@@ -70,4 +66,8 @@
   padding: 10px;
   border-radius: 5px;
   background-color: #f7f7f7;
+  &:hover {
+    background: #eccc80;
+    cursor: pointer;
+  }
 }

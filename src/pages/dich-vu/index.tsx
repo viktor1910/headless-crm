@@ -233,88 +233,90 @@ const DichVu = () => {
         </Container>
       </Section>
       <Section title="Danh Mục Dịch Vụ" subTitle="">
-        <Slider {...settingService} className={styles.slickSlider}>
-          <div>
-            <Card className={styles.cardItem}>
-              <Image src={demoImage} alt="" width={200} height={250} />
-              <Card.Body>
-                <Text
-                  type="title"
-                  style={{
-                    textAlign: 'center',
-                    color: '#666',
-                  }}
-                >
-                  Chăm Sóc Và Điều Trị Da
-                </Text>
-              </Card.Body>
-            </Card>
-          </div>
-          <div>
-            <Card className={styles.cardItem}>
-              <Image src={demoImage} alt="" width={200} height={250} />
-              <Card.Body>
-                <Text
-                  type="title"
-                  style={{
-                    textAlign: 'center',
-                    color: '#666',
-                  }}
-                >
-                  Dịch Vụ Khác
-                </Text>
-              </Card.Body>
-            </Card>
-          </div>
-          <div>
-            <Card className={styles.cardItem}>
-              <Image src={demoImage} alt="" width={200} height={250} />
-              <Card.Body>
-                <Text
-                  type="title"
-                  style={{
-                    textAlign: 'center',
-                    color: '#666',
-                  }}
-                >
-                  Giảm Béo
-                </Text>
-              </Card.Body>
-            </Card>
-          </div>
-          <div>
-            <Card className={styles.cardItem}>
-              <Image src={demoImage} alt="" width={200} height={250} />
-              <Card.Body>
-                <Text
-                  type="title"
-                  style={{
-                    textAlign: 'center',
-                    color: '#666',
-                  }}
-                >
-                  Nâng Cơ-Trẻ Hóa Da
-                </Text>
-              </Card.Body>
-            </Card>
-          </div>
-          <div>
-            <Card className={styles.cardItem}>
-              <Image src={demoImage} alt="" width={200} height={250} />
-              <Card.Body>
-                <Text
-                  type="title"
-                  style={{
-                    textAlign: 'center',
-                    color: '#666',
-                  }}
-                >
-                  Tắm Trắng
-                </Text>
-              </Card.Body>
-            </Card>
-          </div>
-        </Slider>
+        <Container fluid>
+          <Slider {...settingService} className={styles.slickSlider}>
+            <div>
+              <Card className={styles.cardItem}>
+                <Image src={demoImage} alt="" width={200} height={250} />
+                <Card.Body>
+                  <Text
+                    type="title"
+                    style={{
+                      textAlign: 'center',
+                      color: '#666',
+                    }}
+                  >
+                    Chăm Sóc Và Điều Trị Da
+                  </Text>
+                </Card.Body>
+              </Card>
+            </div>
+            <div>
+              <Card className={styles.cardItem}>
+                <Image src={demoImage} alt="" width={200} height={250} />
+                <Card.Body>
+                  <Text
+                    type="title"
+                    style={{
+                      textAlign: 'center',
+                      color: '#666',
+                    }}
+                  >
+                    Dịch Vụ Khác
+                  </Text>
+                </Card.Body>
+              </Card>
+            </div>
+            <div>
+              <Card className={styles.cardItem}>
+                <Image src={demoImage} alt="" width={200} height={250} />
+                <Card.Body>
+                  <Text
+                    type="title"
+                    style={{
+                      textAlign: 'center',
+                      color: '#666',
+                    }}
+                  >
+                    Giảm Béo
+                  </Text>
+                </Card.Body>
+              </Card>
+            </div>
+            <div>
+              <Card className={styles.cardItem}>
+                <Image src={demoImage} alt="" width={200} height={250} />
+                <Card.Body>
+                  <Text
+                    type="title"
+                    style={{
+                      textAlign: 'center',
+                      color: '#666',
+                    }}
+                  >
+                    Nâng Cơ-Trẻ Hóa Da
+                  </Text>
+                </Card.Body>
+              </Card>
+            </div>
+            <div>
+              <Card className={styles.cardItem}>
+                <Image src={demoImage} alt="" width={200} height={250} />
+                <Card.Body>
+                  <Text
+                    type="title"
+                    style={{
+                      textAlign: 'center',
+                      color: '#666',
+                    }}
+                  >
+                    Tắm Trắng
+                  </Text>
+                </Card.Body>
+              </Card>
+            </div>
+          </Slider>
+        </Container>
       </Section>
 
       <Section title="Dịch Vụ" subTitle="">

@@ -24,8 +24,8 @@ const DatLich = () => {
         }}
       />
       <Container>
-        <Row>
-          <Col lg={6}>
+        <Row className={styles.displayRow}>
+          <Col lg={6} className={styles.wrapperCol} style={{ margin: '0', padding: '0' }}>
             <div className={styles.wrapperDatLich}>
               <div className={styles.image1}>
                 <Image src={imgDatLich} alt="" />
@@ -39,24 +39,23 @@ const DatLich = () => {
               </div>
             </div>
           </Col>
-          <Col lg={6}>
+          <Col lg={6} className={styles.displayCol} style={{ margin: '0', padding: '0' }}>
             <Form>
-              <Form.Group className="mb-5" controlId="exampleForm.ControlInput1">
+              <Form.Group className="mb-4" controlId="exampleForm.ControlInput1">
                 <Form.Control type="text" placeholder="HọTên" />
               </Form.Group>
-              <Form.Group className="mb-5" controlId="exampleForm.ControlInput2">
+              <Form.Group className="mb-4" controlId="exampleForm.ControlInput2">
                 <Form.Control type="text" placeholder="Điện Thoại" />
               </Form.Group>
-              <Form.Group className="mb-5" controlId="exampleForm.ControlTextarea3">
+              <Form.Group className="mb-4" controlId="exampleForm.ControlTextarea3">
                 <Form.Control as="textarea" placeholder="Nội Dung Đặt Lịch" rows={3} />
               </Form.Group>
-              <Button variant="outline-secondary" size="lg">
-                Đặt Lịch
-              </Button>
+              <Button variant="outline-secondary">Đặt Lịch</Button>
               <Text
                 type="body"
                 style={{
                   marginTop: '10px',
+                  marginBottom: '10px',
                   color: 'gray',
                 }}
               >
