@@ -1,0 +1,59 @@
+.wrapperDatLich {
+  height: 666px;
+  position: relative;
+  padding: 1rem;
+  margin: 1rem;
+}
+.imageWrapper {
+  display: flex;
+  justify-content: flex-center;
+  width: 50%;
+  height: 350px;
+  border: 7px solid#eccc80;
+}
+.image1 {
+  display: flex;
+  justify-content: flex-start;
+  z-index: 3;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.image2 {
+  display: flex;
+  justify-content: center;
+  margin-top: 25%;
+  z-index: 1;
+}
+.image3 {
+  display: flex;
+  justify-content: flex-end;
+  z-index: 2;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
+.form-control {
+  border: none;
+}
+@media only screen and (max-width: 992px) {
+  .displayRow {
+    display: flex;
+    flex-direction: column-reverse;
+  }
+}
+.displayCol {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+@media only screen and (max-width: 480px) {
+  .image3,
+  .image2 {
+    display: none;
+  }
+}
+.wrapperCol {
+  display: block;
+  justify-content: center;
+}

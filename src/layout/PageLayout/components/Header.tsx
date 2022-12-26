@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Image from 'next/image';
 import logo from '../../../../public/img/download.png';
 import Container from 'react-bootstrap/Container';
@@ -7,9 +7,24 @@ import Navbar from 'react-bootstrap/Navbar';
 import Offcanvas from 'react-bootstrap/Offcanvas';
 import styles from '../index.module.scss';
 const Header = () => {
+  const [scrollY, setScrollY] = React.useState(0);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrollY(window.scrollY);
+    };
+
+    handleScroll();
+
+    window.addEventListener('scroll', handleScroll);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
   return (
     <Navbar bg="white" expand="lg">
-      <Container fluid className={styles.headerContainer}>
+      <Container fluid className={scrollY > 200 ? styles.scrolled : styles.headerContainer}>
         <div className={styles.headerLogo}>
           <Navbar.Toggle aria-controls="offcanvasNavbar-expand-lg" />
 
@@ -28,11 +43,11 @@ const Header = () => {
           </Offcanvas.Header>
           <Offcanvas.Body>
             <Nav className={styles.headerMenu}>
-              <Nav.Link href="#trang-chu">Trang Chủ</Nav.Link>
-              <Nav.Link href="#dich-vu">Dịch Vụ</Nav.Link>
-              <Nav.Link href="#khuyen-mai">Khuyến Mãi</Nav.Link>
-              <Nav.Link href="#dat-lich">Đặt Lịch</Nav.Link>
-              <Nav.Link href="#lien-he">Liên Hệ</Nav.Link>
+              <Nav.Link href="/">Trang Chủ</Nav.Link>
+              <Nav.Link href="dich-vu">Dịch Vụ</Nav.Link>
+              <Nav.Link href="khuyen-mai">Khuyến Mãi</Nav.Link>
+              <Nav.Link href="dat-lich">Đặt Lịch</Nav.Link>
+              <Nav.Link href="lien-he">Liên Hệ</Nav.Link>
             </Nav>
           </Offcanvas.Body>
         </Navbar.Offcanvas>

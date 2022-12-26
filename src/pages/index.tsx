@@ -2,8 +2,7 @@ import Text from '~/components/Text';
 import Banner from '~/components/Banner';
 import { Container } from 'react-bootstrap';
 import Section from '~/components/Section';
-import Services from '~/components/Services';
-import SlideWrapper from '~/components/SlideWrapper';
+import TrangChu from '~/components/TrangChu';
 import axiosWrapper from '~/services/axiosConfig';
 import { ImagesAPIResponse, ImagesModel } from '~/@types/Banner';
 import { getBannerImage } from '~/services/util';
@@ -16,9 +15,9 @@ interface HomeProps {
 export default function Home({ bannerMd, bannerLg }: HomeProps) {
   return (
     <>
-      <div>
+      {/* <div>
         <Banner bannerLg={bannerLg} bannerMd={bannerMd} />
-      </div>
+      </div> */}
       <Container>
         <Section title="CHÀO MỪNG BẠN ĐẾN VỚI" subTitle="VIỆN THẨM MỸ NÂNG CƠ CÔNG NGHỆ CAO HÀNG ĐẦU CHÂU Á">
           <Text
@@ -57,8 +56,7 @@ export default function Home({ bannerMd, bannerLg }: HomeProps) {
           </Text>
         </Section>
       </Container>
-      <SlideWrapper />
-      <Services />
+      <TrangChu />
     </>
   );
 }
