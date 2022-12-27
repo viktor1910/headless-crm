@@ -13,6 +13,8 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import CardDichVu from './components/CardDichVu';
 import CardPostDichVu from './components/CardPostDichVu';
+import axiosWrapper from '~/services/axiosConfig';
+import { Categories } from '../types';
 
 const settings = {
   dots: true,
@@ -205,3 +207,18 @@ const DichVu = () => {
 };
 
 export default DichVu;
+
+export const getStaticProps = async () => {
+  const res = await axiosWrapper
+    .get('/posts', {
+      params: {
+        categories: Categories.DichVu,
+        per_page: 10,
+      },
+    })
+    .then(res => res.data);
+
+  return {
+    props: {},
+  };
+};
