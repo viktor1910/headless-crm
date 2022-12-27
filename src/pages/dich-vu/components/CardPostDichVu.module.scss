@@ -1,0 +1,24 @@
+.imgContainer {
+  position: relative;
+  width: 100%;
+  min-height: 300px;
+}
+
+.cardPremium {
+  padding: 10px;
+  transition: all 0.3s ease-in-out;
+  text-align: center;
+  &:hover {
+    background: #eccc80;
+    cursor: pointer;
+  }
+}
+
+.cardBodyContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  color: '#666';
+}

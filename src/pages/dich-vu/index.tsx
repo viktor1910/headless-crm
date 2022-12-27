@@ -11,453 +11,192 @@ import demoPremium from '../../../public/img/premium.jpg';
 import Button from 'react-bootstrap/Button';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+import CardDichVu from './components/CardDichVu';
+import CardPostDichVu from './components/CardPostDichVu';
+
+const settings = {
+  dots: true,
+  infinite: false,
+  slidesToShow: 5,
+  slidesToScroll: 3,
+  initialSlide: 0,
+  responsive: [
+    {
+      breakpoint: 992,
+      settings: {
+        slidesToShow: 2,
+        slidesToScroll: 2,
+        initialSlide: 2,
+      },
+    },
+    {
+      breakpoint: 600,
+      settings: {
+        slidesToShow: 1,
+        slidesToScroll: 1,
+      },
+    },
+  ],
+};
+const settingDanhMuc = {
+  dots: true,
+  infinite: false,
+  speed: 500,
+  slidesToShow: 4,
+  slidesToScroll: 1,
+  initialSlide: 0,
+  responsive: [
+    {
+      breakpoint: 992,
+      settings: {
+        slidesToShow: 2,
+        slidesToScroll: 2,
+        initialSlide: 2,
+      },
+    },
+    {
+      breakpoint: 600,
+      settings: {
+        slidesToShow: 1,
+        slidesToScroll: 1,
+      },
+    },
+  ],
+};
+
 const DichVu = () => {
-  var settings = {
-    dots: true,
-    infinite: false,
-    speed: 500,
-    slidesToShow: 5,
-    slidesToScroll: 3,
-    initialSlide: 0,
-    responsive: [
-      {
-        breakpoint: 1024,
-        settings: {
-          slidesToShow: 4,
-          slidesToScroll: 4,
-          infinite: true,
-          dots: true,
-        },
-      },
-      {
-        breakpoint: 600,
-        settings: {
-          slidesToShow: 2,
-          slidesToScroll: 2,
-          initialSlide: 2,
-        },
-      },
-      {
-        breakpoint: 480,
-        settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1,
-        },
-      },
-    ],
-  };
-  var settingService = {
-    dots: true,
-    infinite: false,
-    speed: 500,
-    slidesToShow: 3,
-    slidesToScroll: 3,
-    initialSlide: 0,
-    responsive: [
-      {
-        breakpoint: 1024,
-        settings: {
-          slidesToShow: 3,
-          slidesToScroll: 3,
-          infinite: true,
-          dots: true,
-        },
-      },
-      {
-        breakpoint: 600,
-        settings: {
-          slidesToShow: 2,
-          slidesToScroll: 2,
-          initialSlide: 2,
-        },
-      },
-      {
-        breakpoint: 480,
-        settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1,
-        },
-      },
-    ],
-  };
   return (
     <>
       <Section title="Dịch Vụ Nổi Bật" subTitle="">
         <Container fluid>
-          <Slider {...settings} className={styles.slickSlider}>
-            <div>
-              <Card className={styles.cardItem}>
-                <Image src={demoImage} alt="" width={200} height={250} />
-                <Card.Body>
-                  <Text
-                    type="title"
-                    style={{
-                      textAlign: 'center',
-                      color: '#666',
-                      marginTop: '10px',
-                      marginBottom: '.5em',
-                    }}
-                  >
-                    Some quick example text
-                  </Text>
-                </Card.Body>
-              </Card>
-            </div>
-            <div>
-              <Card className={styles.cardItem}>
-                <Image src={demoImage} alt="" width={200} height={250} />
-                <Card.Body>
-                  <Text
-                    type="title"
-                    style={{
-                      textAlign: 'center',
-                      color: '#666',
-                      marginTop: '10px',
-                      marginBottom: '.5em',
-                    }}
-                  >
-                    Some quick example text
-                  </Text>
-                </Card.Body>
-              </Card>
-            </div>
-            <div>
-              <Card className={styles.cardItem}>
-                <Image src={demoImage} alt="" width={200} height={250} />
-                <Card.Body>
-                  <Text
-                    type="title"
-                    style={{
-                      textAlign: 'center',
-                      color: '#666',
-                      marginTop: '10px',
-                      marginBottom: '.5em',
-                    }}
-                  >
-                    Some quick example text
-                  </Text>
-                </Card.Body>
-              </Card>
-            </div>
-            <div>
-              <Card className={styles.cardItem}>
-                <Image src={demoImage} alt="" width={200} height={250} />
-                <Card.Body>
-                  <Text
-                    type="title"
-                    style={{
-                      textAlign: 'center',
-                      color: '#666',
-                      marginTop: '10px',
-                      marginBottom: '.5em',
-                    }}
-                  >
-                    Some quick example text
-                  </Text>
-                </Card.Body>
-              </Card>
-            </div>
-            <div>
-              <Card className={styles.cardItem}>
-                <Image src={demoImage} alt="" width={200} height={250} />
-                <Card.Body>
-                  <Text
-                    type="title"
-                    style={{
-                      textAlign: 'center',
-                      color: '#666',
-                      marginTop: '10px',
-                      marginBottom: '.5em',
-                    }}
-                  >
-                    Some quick example text
-                  </Text>
-                </Card.Body>
-              </Card>
-            </div>
-            <div>
-              <Card className={styles.cardItem}>
-                <Image src={demoImage} alt="" width={200} height={250} />
-                <Card.Body>
-                  <Text
-                    type="title"
-                    style={{
-                      textAlign: 'center',
-                      color: '#666',
-                      marginTop: '10px',
-                      marginBottom: '.5em',
-                    }}
-                  >
-                    Some quick example text
-                  </Text>
-                </Card.Body>
-              </Card>
-            </div>
-            <div>
-              <Card className={styles.cardItem}>
-                <Image src={demoImage} alt="" width={200} height={250} />
-                <Card.Body>
-                  <Text
-                    type="title"
-                    style={{
-                      textAlign: 'center',
-                      color: '#666',
-                      marginTop: '10px',
-                      marginBottom: '.5em',
-                    }}
-                  >
-                    Some quick example text
-                  </Text>
-                </Card.Body>
-              </Card>
-            </div>
-            <div>
-              <Card className={styles.cardItem}>
-                <Image src={demoImage} alt="" width={200} height={250} />
-                <Card.Body>
-                  <Text
-                    type="title"
-                    style={{
-                      textAlign: 'center',
-                      color: '#666',
-                      marginTop: '10px',
-                      marginBottom: '.5em',
-                    }}
-                  >
-                    Some quick example text
-                  </Text>
-                </Card.Body>
-              </Card>
-            </div>
+          <Slider {...settings}>
+            <CardDichVu
+              srcImg="https://shynhpremium.vn/wp-content/uploads/2021/10/Cong-nghe-tre-hoa-Thermage-FLX-1.png"
+              alt=""
+              title="something"
+              type="noi-bat"
+            />
+            <CardDichVu
+              srcImg="https://shynhpremium.vn/wp-content/uploads/2021/10/Cong-nghe-tre-hoa-Thermage-FLX-1.png"
+              alt=""
+              title="something"
+              type="noi-bat"
+            />
+            <CardDichVu
+              srcImg="https://shynhpremium.vn/wp-content/uploads/2021/10/Cong-nghe-tre-hoa-Thermage-FLX-1.png"
+              alt=""
+              title="something"
+              type="noi-bat"
+            />
+            <CardDichVu
+              srcImg="https://shynhpremium.vn/wp-content/uploads/2021/10/Cong-nghe-tre-hoa-Thermage-FLX-1.png"
+              alt=""
+              title="something"
+              type="noi-bat"
+            />
+            <CardDichVu
+              srcImg="https://shynhpremium.vn/wp-content/uploads/2021/10/Cong-nghe-tre-hoa-Thermage-FLX-1.png"
+              alt=""
+              title="something"
+              type="noi-bat"
+            />
+            <CardDichVu
+              srcImg="https://shynhpremium.vn/wp-content/uploads/2021/10/Cong-nghe-tre-hoa-Thermage-FLX-1.png"
+              alt=""
+              title="something"
+              type="noi-bat"
+            />
           </Slider>
         </Container>
       </Section>
-      <Section title="Danh Mục Dịch Vụ" subTitle="">
+      <Section title="Dịch Vụ Nổi Bật" subTitle="">
         <Container fluid>
-          <Slider {...settingService} className={styles.slickSlider}>
-            <div>
-              <Card className={styles.cardItem}>
-                <Image src={demoImage} alt="" width={200} height={250} />
-                <Card.Body>
-                  <Text
-                    type="title"
-                    style={{
-                      textAlign: 'center',
-                      color: '#666',
-                    }}
-                  >
-                    Chăm Sóc Và Điều Trị Da
-                  </Text>
-                </Card.Body>
-              </Card>
-            </div>
-            <div>
-              <Card className={styles.cardItem}>
-                <Image src={demoImage} alt="" width={200} height={250} />
-                <Card.Body>
-                  <Text
-                    type="title"
-                    style={{
-                      textAlign: 'center',
-                      color: '#666',
-                    }}
-                  >
-                    Dịch Vụ Khác
-                  </Text>
-                </Card.Body>
-              </Card>
-            </div>
-            <div>
-              <Card className={styles.cardItem}>
-                <Image src={demoImage} alt="" width={200} height={250} />
-                <Card.Body>
-                  <Text
-                    type="title"
-                    style={{
-                      textAlign: 'center',
-                      color: '#666',
-                    }}
-                  >
-                    Giảm Béo
-                  </Text>
-                </Card.Body>
-              </Card>
-            </div>
-            <div>
-              <Card className={styles.cardItem}>
-                <Image src={demoImage} alt="" width={200} height={250} />
-                <Card.Body>
-                  <Text
-                    type="title"
-                    style={{
-                      textAlign: 'center',
-                      color: '#666',
-                    }}
-                  >
-                    Nâng Cơ-Trẻ Hóa Da
-                  </Text>
-                </Card.Body>
-              </Card>
-            </div>
-            <div>
-              <Card className={styles.cardItem}>
-                <Image src={demoImage} alt="" width={200} height={250} />
-                <Card.Body>
-                  <Text
-                    type="title"
-                    style={{
-                      textAlign: 'center',
-                      color: '#666',
-                    }}
-                  >
-                    Tắm Trắng
-                  </Text>
-                </Card.Body>
-              </Card>
-            </div>
+          <Slider {...settingDanhMuc}>
+            <CardDichVu
+              srcImg="https://shynhpremium.vn/wp-content/uploads/2021/10/Cong-nghe-tre-hoa-Thermage-FLX-1.png"
+              alt=""
+              title="something"
+              type="danh-muc"
+            />
+            <CardDichVu
+              srcImg="https://shynhpremium.vn/wp-content/uploads/2021/10/Cong-nghe-tre-hoa-Thermage-FLX-1.png"
+              alt=""
+              title="something"
+              type="danh-muc"
+            />
+            <CardDichVu
+              srcImg="https://shynhpremium.vn/wp-content/uploads/2021/10/Cong-nghe-tre-hoa-Thermage-FLX-1.png"
+              alt=""
+              title="something"
+              type="danh-muc"
+            />
+            <CardDichVu
+              srcImg="https://shynhpremium.vn/wp-content/uploads/2021/10/Cong-nghe-tre-hoa-Thermage-FLX-1.png"
+              alt=""
+              title="something"
+              type="danh-muc"
+            />
           </Slider>
         </Container>
       </Section>
 
       <Section title="Dịch Vụ" subTitle="">
-        <Row>
-          <Col xl={4} lg={6} sm={6}>
-            <Card style={{ border: 'none' }} className={styles.cardPremium}>
-              <div className={styles.borderImg}>
-                <Image src={demoPremium} alt="" width={400} height={250} />
-              </div>
-              <Card.Body>
-                <Text
-                  type="title"
-                  style={{
-                    textAlign: 'center',
-                    color: '#666',
-                    marginTop: '10px',
-                    marginBottom: '.5em',
-                  }}
-                >
-                  Detox Skin thải độc hồi sinh làn da khỏe
-                </Text>
-                <Button variant="outline-secondary" size="lg">
-                  Xem Thêm
-                </Button>
-              </Card.Body>
-            </Card>
+        <Row className={styles.styledRow}>
+          <Col xl={4} lg={6} sm={12} className={styles.styledCol}>
+            <CardPostDichVu
+              alt=""
+              imgSrc="https://shynhpremium.vn/wp-content/uploads/2021/10/Cong-nghe-tre-hoa-Thermage-FLX-1.png"
+              title="Detox Skin thải độc hồi sinh làn da khỏe"
+            />
           </Col>
-          <Col xl={4} lg={6} sm={6}>
-            <Card style={{ border: 'none' }} className={styles.cardPremium}>
-              <div className={styles.borderImg}>
-                <Image src={demoPremium} alt="" width={400} height={250} />
-              </div>
-              <Card.Body>
-                <Text
-                  type="title"
-                  style={{
-                    textAlign: 'center',
-                    color: '#666',
-                    marginTop: '10px',
-                    marginBottom: '.5em',
-                  }}
-                >
-                  Detox Skin thải độc hồi sinh làn da khỏe
-                </Text>
-                <Button variant="outline-secondary" size="lg">
-                  Xem Thêm
-                </Button>
-              </Card.Body>
-            </Card>
+          <Col xl={4} lg={6} sm={12} className={styles.styledCol}>
+            <CardPostDichVu
+              alt=""
+              imgSrc="https://shynhpremium.vn/wp-content/uploads/2021/10/Cong-nghe-tre-hoa-Thermage-FLX-1.png"
+              title="Detox Skin thải độc hồi sinh làn da khỏe"
+            />
           </Col>
-          <Col xl={4} lg={6} sm={6}>
-            <Card style={{ border: 'none' }} className={styles.cardPremium}>
-              <div className={styles.borderImg}>
-                <Image src={demoPremium} alt="" width={400} height={250} />
-              </div>
-              <Card.Body>
-                <Text
-                  type="title"
-                  style={{
-                    textAlign: 'center',
-                    color: '#666',
-                    marginTop: '10px',
-                    marginBottom: '.5em',
-                  }}
-                >
-                  Detox Skin thải độc hồi sinh làn da khỏe
-                </Text>
-                <Button variant="outline-secondary" size="lg">
-                  Xem Thêm
-                </Button>
-              </Card.Body>
-            </Card>
+          <Col xl={4} lg={6} sm={12} className={styles.styledCol}>
+            <CardPostDichVu
+              alt=""
+              imgSrc="https://shynhpremium.vn/wp-content/uploads/2021/10/Cong-nghe-tre-hoa-Thermage-FLX-1.png"
+              title="Detox Skin thải độc hồi sinh làn da khỏe"
+            />
           </Col>
-          <Col xl={4} lg={6} sm={6}>
-            <Card style={{ border: 'none' }} className={styles.cardPremium}>
-              <div className={styles.borderImg}>
-                <Image src={demoPremium} alt="" width={400} height={250} />
-              </div>
-              <Card.Body>
-                <Text
-                  type="title"
-                  style={{
-                    textAlign: 'center',
-                    color: '#666',
-                    marginTop: '10px',
-                    marginBottom: '.5em',
-                  }}
-                >
-                  Detox Skin thải độc hồi sinh làn da khỏe
-                </Text>
-                <Button variant="outline-secondary" size="lg">
-                  Xem Thêm
-                </Button>
-              </Card.Body>
-            </Card>
+          <Col xl={4} lg={6} sm={12} className={styles.styledCol}>
+            <CardPostDichVu
+              alt=""
+              imgSrc="https://shynhpremium.vn/wp-content/uploads/2021/10/Cong-nghe-tre-hoa-Thermage-FLX-1.png"
+              title="Detox Skin thải độc hồi sinh làn da khỏe"
+            />
           </Col>
-          <Col xl={4} lg={6} sm={6}>
-            <Card style={{ border: 'none' }} className={styles.cardPremium}>
-              <div className={styles.borderImg}>
-                <Image src={demoPremium} alt="" width={400} height={250} />
-              </div>
-              <Card.Body>
-                <Text
-                  type="title"
-                  style={{
-                    textAlign: 'center',
-                    color: '#666',
-                    marginTop: '10px',
-                    marginBottom: '.5em',
-                  }}
-                >
-                  Detox Skin thải độc hồi sinh làn da khỏe
-                </Text>
-                <Button variant="outline-secondary" size="lg">
-                  Xem Thêm
-                </Button>
-              </Card.Body>
-            </Card>
+          <Col xl={4} lg={6} sm={12} className={styles.styledCol}>
+            <CardPostDichVu
+              alt=""
+              imgSrc="https://shynhpremium.vn/wp-content/uploads/2021/10/Cong-nghe-tre-hoa-Thermage-FLX-1.png"
+              title="Detox Skin thải độc hồi sinh làn da khỏe"
+            />
           </Col>
-          <Col xl={4} lg={6} sm={6}>
-            <Card style={{ border: 'none' }} className={styles.cardPremium}>
-              <div className={styles.borderImg}>
-                <Image src={demoPremium} alt="" width={400} height={250} />
-              </div>
-              <Card.Body>
-                <Text
-                  type="title"
-                  style={{
-                    textAlign: 'center',
-                    color: '#666',
-                    marginTop: '10px',
-                    marginBottom: '.5em',
-                  }}
-                >
-                  Detox Skin thải độc hồi sinh làn da khỏe
-                </Text>
-                <Button variant="outline-secondary" size="lg">
-                  Xem Thêm
-                </Button>
-              </Card.Body>
-            </Card>
+          <Col xl={4} lg={6} sm={12} className={styles.styledCol}>
+            <CardPostDichVu
+              alt=""
+              imgSrc="https://shynhpremium.vn/wp-content/uploads/2021/10/Cong-nghe-tre-hoa-Thermage-FLX-1.png"
+              title="Detox Skin thải độc hồi sinh làn da khỏe"
+            />
+          </Col>
+          <Col xl={4} lg={6} sm={12} className={styles.styledCol}>
+            <CardPostDichVu
+              alt=""
+              imgSrc="https://shynhpremium.vn/wp-content/uploads/2021/10/Cong-nghe-tre-hoa-Thermage-FLX-1.png"
+              title="Detox Skin thải độc hồi sinh làn da khỏe"
+            />
+          </Col>
+          <Col xl={4} lg={6} sm={12} className={styles.styledCol}>
+            <CardPostDichVu
+              alt=""
+              imgSrc="https://shynhpremium.vn/wp-content/uploads/2021/10/Cong-nghe-tre-hoa-Thermage-FLX-1.png"
+              title="Detox Skin thải độc hồi sinh làn da khỏe"
+            />
           </Col>
         </Row>
       </Section>

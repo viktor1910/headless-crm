@@ -1,0 +1,25 @@
+.imgNoiBat {
+  position: relative;
+  width: 100%;
+  min-height: 200px;
+}
+
+.imgDanhMuc,
+.imgDichVu {
+  position: relative;
+  width: 100%;
+  min-height: 300px;
+}
+
+.cardContainer {
+  padding: 10px;
+  transition: all 0.3s ease-in-out;
+  text-align: center;
+  &:hover {
+    background: #eccc80;
+    cursor: pointer;
+  }
+  @media only screen and (min-width: 600px) {
+    margin-right: 16px;
+  }
+}
