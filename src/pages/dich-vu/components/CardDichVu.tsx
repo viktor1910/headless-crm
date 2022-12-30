@@ -3,11 +3,10 @@ import { Card } from 'react-bootstrap';
 import Image from 'next/image';
 import styles from './CardDichVu.module.scss';
 import Text from '~/components/Text';
+import { CardDichVuModel } from '~/pages/types';
 
 interface CardDichVuProps {
-  srcImg: string;
-  alt: string;
-  title: string;
+  data: CardDichVuModel;
   type: 'danh-muc' | 'noi-bat';
 }
 
@@ -22,18 +21,20 @@ const defineClassNameImg = (type: 'danh-muc' | 'noi-bat') => {
   }
 };
 
-const CardDichVu = ({ srcImg, alt, title, type }: CardDichVuProps) => {
+const CardDichVu = ({ data, type }: CardDichVuProps) => {
   return (
     <Card className={styles.cardContainer}>
       <div className={defineClassNameImg(type)}>
-        <Image
-          src={srcImg}
-          fill
-          alt={alt}
-          style={{
-            objectFit: 'fill',
-          }}
-        />
+        {data.acf?.feature_image_url && (
+          <Image
+            src={data.acf?.feature_image_url}
+            fill
+            alt={data.acf.feature_image_alt}
+            style={{
+              objectFit: 'fill',
+            }}
+          />
+        )}
       </div>
       <div>
         <Text
@@ -45,7 +46,7 @@ const CardDichVu = ({ srcImg, alt, title, type }: CardDichVuProps) => {
             marginBottom: '.5em',
           }}
         >
-          {title}
+          <span dangerouslySetInnerHTML={{ __html: data.title.rendered }} />
         </Text>
       </div>
     </Card>

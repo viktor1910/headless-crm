@@ -1,28 +1,30 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Card, Button } from 'react-bootstrap';
 import styles from './CardPostDichVu.module.scss';
 import Text from '~/components/Text';
 import Image from 'next/image';
+import { CardDichVuModel, ImageModel } from '~/pages/types';
+import axiosWrapper from '~/services/axiosConfig';
 
 interface CardPostDichVuProps {
-  imgSrc: string;
-  title: string;
-  alt: string;
+  data: CardDichVuModel;
 }
 
-const CardPostDichVu = ({ imgSrc, title, alt }: CardPostDichVuProps) => {
+const CardPostDichVu = ({ data }: CardPostDichVuProps) => {
   return (
     <>
       <Card className={styles.cardPremium}>
         <div className={styles.imgContainer}>
-          <Image
-            src={imgSrc}
-            alt={alt}
-            fill
-            style={{
-              objectFit: 'fill',
-            }}
-          />
+          {data.acf?.feature_image_url && (
+            <Image
+              src={data.acf.feature_image_url}
+              alt={data.acf.feature_image_alt}
+              fill
+              style={{
+                objectFit: 'fill',
+              }}
+            />
+          )}
         </div>
       </Card>
       <div className={styles.cardBodyContainer}>
@@ -35,7 +37,7 @@ const CardPostDichVu = ({ imgSrc, title, alt }: CardPostDichVuProps) => {
             marginBottom: '.5em',
           }}
         >
-          {title}
+          {data.title.rendered}
         </Text>
         <Button variant="outline-secondary" size="lg">
           Xem Thêm

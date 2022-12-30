@@ -4,17 +4,12 @@ import Text from '~/components/Text';
 import styles from './index.module.scss';
 import Slider from 'react-slick';
 import { Container } from 'react-bootstrap';
-import Card from 'react-bootstrap/Card';
-import Image from 'next/image';
-import demoImage from '../../../public/img/demoImage.png';
-import demoPremium from '../../../public/img/premium.jpg';
-import Button from 'react-bootstrap/Button';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import CardDichVu from './components/CardDichVu';
 import CardPostDichVu from './components/CardPostDichVu';
 import axiosWrapper from '~/services/axiosConfig';
-import { Categories } from '../types';
+import { CardDichVuModel, Categories } from '../types';
 
 const settings = {
   dots: true,
@@ -66,140 +61,45 @@ const settingDanhMuc = {
   ],
 };
 
-const DichVu = () => {
+interface DichVuProps {
+  data: CardDichVuModel[];
+  dichVuNoiBat: CardDichVuModel[];
+  danhMucDichVu: CardDichVuModel[];
+}
+
+const DichVu = ({ data, dichVuNoiBat, danhMucDichVu }: DichVuProps) => {
   return (
     <>
       <Section title="Dịch Vụ Nổi Bật" subTitle="">
         <Container fluid>
           <Slider {...settings}>
-            <CardDichVu
-              srcImg="https://shynhpremium.vn/wp-content/uploads/2021/10/Cong-nghe-tre-hoa-Thermage-FLX-1.png"
-              alt=""
-              title="something"
-              type="noi-bat"
-            />
-            <CardDichVu
-              srcImg="https://shynhpremium.vn/wp-content/uploads/2021/10/Cong-nghe-tre-hoa-Thermage-FLX-1.png"
-              alt=""
-              title="something"
-              type="noi-bat"
-            />
-            <CardDichVu
-              srcImg="https://shynhpremium.vn/wp-content/uploads/2021/10/Cong-nghe-tre-hoa-Thermage-FLX-1.png"
-              alt=""
-              title="something"
-              type="noi-bat"
-            />
-            <CardDichVu
-              srcImg="https://shynhpremium.vn/wp-content/uploads/2021/10/Cong-nghe-tre-hoa-Thermage-FLX-1.png"
-              alt=""
-              title="something"
-              type="noi-bat"
-            />
-            <CardDichVu
-              srcImg="https://shynhpremium.vn/wp-content/uploads/2021/10/Cong-nghe-tre-hoa-Thermage-FLX-1.png"
-              alt=""
-              title="something"
-              type="noi-bat"
-            />
-            <CardDichVu
-              srcImg="https://shynhpremium.vn/wp-content/uploads/2021/10/Cong-nghe-tre-hoa-Thermage-FLX-1.png"
-              alt=""
-              title="something"
-              type="noi-bat"
-            />
+            {dichVuNoiBat.map(dichvu => (
+              <div key={dichvu.slug}>
+                <CardDichVu data={dichvu} type="noi-bat" />
+              </div>
+            ))}
           </Slider>
         </Container>
       </Section>
       <Section title="Dịch Vụ Nổi Bật" subTitle="">
         <Container fluid>
           <Slider {...settingDanhMuc}>
-            <CardDichVu
-              srcImg="https://shynhpremium.vn/wp-content/uploads/2021/10/Cong-nghe-tre-hoa-Thermage-FLX-1.png"
-              alt=""
-              title="something"
-              type="danh-muc"
-            />
-            <CardDichVu
-              srcImg="https://shynhpremium.vn/wp-content/uploads/2021/10/Cong-nghe-tre-hoa-Thermage-FLX-1.png"
-              alt=""
-              title="something"
-              type="danh-muc"
-            />
-            <CardDichVu
-              srcImg="https://shynhpremium.vn/wp-content/uploads/2021/10/Cong-nghe-tre-hoa-Thermage-FLX-1.png"
-              alt=""
-              title="something"
-              type="danh-muc"
-            />
-            <CardDichVu
-              srcImg="https://shynhpremium.vn/wp-content/uploads/2021/10/Cong-nghe-tre-hoa-Thermage-FLX-1.png"
-              alt=""
-              title="something"
-              type="danh-muc"
-            />
+            {danhMucDichVu.map(dichvu => (
+              <div key={dichvu.slug}>
+                <CardDichVu data={dichvu} type="danh-muc" />
+              </div>
+            ))}
           </Slider>
         </Container>
       </Section>
 
       <Section title="Dịch Vụ" subTitle="">
         <Row className={styles.styledRow}>
-          <Col xl={4} lg={6} sm={12} className={styles.styledCol}>
-            <CardPostDichVu
-              alt=""
-              imgSrc="https://shynhpremium.vn/wp-content/uploads/2021/10/Cong-nghe-tre-hoa-Thermage-FLX-1.png"
-              title="Detox Skin thải độc hồi sinh làn da khỏe"
-            />
-          </Col>
-          <Col xl={4} lg={6} sm={12} className={styles.styledCol}>
-            <CardPostDichVu
-              alt=""
-              imgSrc="https://shynhpremium.vn/wp-content/uploads/2021/10/Cong-nghe-tre-hoa-Thermage-FLX-1.png"
-              title="Detox Skin thải độc hồi sinh làn da khỏe"
-            />
-          </Col>
-          <Col xl={4} lg={6} sm={12} className={styles.styledCol}>
-            <CardPostDichVu
-              alt=""
-              imgSrc="https://shynhpremium.vn/wp-content/uploads/2021/10/Cong-nghe-tre-hoa-Thermage-FLX-1.png"
-              title="Detox Skin thải độc hồi sinh làn da khỏe"
-            />
-          </Col>
-          <Col xl={4} lg={6} sm={12} className={styles.styledCol}>
-            <CardPostDichVu
-              alt=""
-              imgSrc="https://shynhpremium.vn/wp-content/uploads/2021/10/Cong-nghe-tre-hoa-Thermage-FLX-1.png"
-              title="Detox Skin thải độc hồi sinh làn da khỏe"
-            />
-          </Col>
-          <Col xl={4} lg={6} sm={12} className={styles.styledCol}>
-            <CardPostDichVu
-              alt=""
-              imgSrc="https://shynhpremium.vn/wp-content/uploads/2021/10/Cong-nghe-tre-hoa-Thermage-FLX-1.png"
-              title="Detox Skin thải độc hồi sinh làn da khỏe"
-            />
-          </Col>
-          <Col xl={4} lg={6} sm={12} className={styles.styledCol}>
-            <CardPostDichVu
-              alt=""
-              imgSrc="https://shynhpremium.vn/wp-content/uploads/2021/10/Cong-nghe-tre-hoa-Thermage-FLX-1.png"
-              title="Detox Skin thải độc hồi sinh làn da khỏe"
-            />
-          </Col>
-          <Col xl={4} lg={6} sm={12} className={styles.styledCol}>
-            <CardPostDichVu
-              alt=""
-              imgSrc="https://shynhpremium.vn/wp-content/uploads/2021/10/Cong-nghe-tre-hoa-Thermage-FLX-1.png"
-              title="Detox Skin thải độc hồi sinh làn da khỏe"
-            />
-          </Col>
-          <Col xl={4} lg={6} sm={12} className={styles.styledCol}>
-            <CardPostDichVu
-              alt=""
-              imgSrc="https://shynhpremium.vn/wp-content/uploads/2021/10/Cong-nghe-tre-hoa-Thermage-FLX-1.png"
-              title="Detox Skin thải độc hồi sinh làn da khỏe"
-            />
-          </Col>
+          {data.map(d => (
+            <Col xl={4} lg={6} sm={12} className={styles.styledCol} key={d.slug}>
+              <CardPostDichVu data={d} />
+            </Col>
+          ))}
         </Row>
       </Section>
     </>
@@ -210,15 +110,28 @@ export default DichVu;
 
 export const getStaticProps = async () => {
   const res = await axiosWrapper
-    .get('/posts', {
+    .get<CardDichVuModel[]>('/posts', {
       params: {
         categories: Categories.DichVu,
         per_page: 10,
       },
     })
     .then(res => res.data);
-
+  const dichVuNoiBat = await axiosWrapper
+    .get<CardDichVuModel[]>('/posts', {
+      params: {
+        categories: Categories.DichVuNoiBat,
+        per_page: 10,
+      },
+    })
+    .then(res => res.data);
+  const danhMucDichVu = await axiosWrapper.get<CardDichVuModel[]>('/danh-muc-dich-vu').then(res => res.data);
   return {
-    props: {},
+    props: {
+      data: res,
+      dichVuNoiBat,
+      danhMucDichVu,
+    },
+    revalidate: 1,
   };
 };

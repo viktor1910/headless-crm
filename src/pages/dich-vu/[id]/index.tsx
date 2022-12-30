@@ -1,7 +1,7 @@
 import React from 'react';
 
 const BaiVietDichVu = () => {
-  return <div>BaiVietDichVu</div>;
+  return <div>Bai viet dich vu</div>;
 };
 
 export default BaiVietDichVu;

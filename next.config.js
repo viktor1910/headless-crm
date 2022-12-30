@@ -9,8 +9,8 @@ const nextConfig = {
   images: {
     remotePatterns: [
       {
-        protocol: 'https',
-        hostname: 'shynhpremium.vn',
+        protocol: 'http',
+        hostname: 'kanghee.local',
       },
     ],
   },
