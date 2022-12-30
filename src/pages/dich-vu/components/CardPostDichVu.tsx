@@ -3,8 +3,9 @@ import { Card, Button } from 'react-bootstrap';
 import styles from './CardPostDichVu.module.scss';
 import Text from '~/components/Text';
 import Image from 'next/image';
-import { CardDichVuModel, ImageModel } from '~/pages/types';
+import { CardDichVuModel } from '~/pages/types';
 import axiosWrapper from '~/services/axiosConfig';
+import Link from 'next/link';
 
 interface CardPostDichVuProps {
   data: CardDichVuModel;
@@ -12,7 +13,7 @@ interface CardPostDichVuProps {
 
 const CardPostDichVu = ({ data }: CardPostDichVuProps) => {
   return (
-    <>
+    <Link href={`/bai-viet/${data.slug}`} style={{ textDecoration: 'none' }}>
       <Card className={styles.cardPremium}>
         <div className={styles.imgContainer}>
           {data.acf?.feature_image_url && (
@@ -43,7 +44,7 @@ const CardPostDichVu = ({ data }: CardPostDichVuProps) => {
           Xem Thêm
         </Button>
       </div>
-    </>
+    </Link>
   );
 };
 

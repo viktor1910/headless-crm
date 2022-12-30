@@ -19,7 +19,16 @@ export interface CardDichVuModel {
   };
 }
 
-export interface ImageModel {
-  alt_text: string;
-  source_url: string;
+export interface BaiVietDichVuModel {
+  id: number;
+  slug: string;
+  title: {
+    rendered: string;
+  };
+  content: {
+    rendered: string;
+  };
+  excerpt?: {
+    rendered: string;
+  };
 }
