@@ -2,36 +2,24 @@
   display: block;
   font-family: 'Montserrat', sans-serif;
   font-weight: 400;
-  font-size: 1.2rem;
+  font-size: 20px;
   margin: 0;
   letter-spacing: 1.5px;
-  @media only screen and (max-width: 768px) {
-    font-size: 0.8rem;
-  }
 }
 
 .title {
   display: block;
   font-family: 'Philosopher', sans-serif;
-  font-size: 2rem;
+  font-size: 40px;
   font-weight: 700;
   color: #444;
   margin: 0;
-  @media (max-width: 1200px) {
-    font-size: 1.7rem;
-  }
-  @media (max-width: 576px) {
-    font-size: 1.5rem;
-  }
 }
 .smallBody {
   display: block;
   font-family: 'Montserrat', sans-serif;
   font-weight: 400;
-  font-size: 1rem;
+  font-size: 16px;
   margin: 0;
   letter-spacing: 1.5px;
-  @media (max-width: 1200px) {
-    font-size: 0.8rem;
-  }
 }

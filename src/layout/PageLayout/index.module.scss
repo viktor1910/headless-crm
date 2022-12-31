@@ -49,6 +49,9 @@
     font-size: 20px;
     padding: 10px 24px;
     margin: 15px;
+    text-decoration: none;
+    color: inherit;
+    font-weight: 500;
     &:hover {
       border-bottom: solid 3px black;
       color: #eccc80;

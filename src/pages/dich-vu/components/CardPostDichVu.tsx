@@ -38,7 +38,13 @@ const CardPostDichVu = ({ data }: CardPostDichVuProps) => {
             marginBottom: '.5em',
           }}
         >
-          {data.title.rendered}
+          <span
+            dangerouslySetInnerHTML={{ __html: data.title.rendered }}
+            style={{
+              fontSize: '20px',
+              fontWeight: '700',
+            }}
+          />
         </Text>
         <Button variant="outline-secondary" size="lg">
           Xem Thêm

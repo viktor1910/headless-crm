@@ -6,13 +6,15 @@ import TrangChu from '~/components/TrangChu';
 import axiosWrapper from '~/services/axiosConfig';
 import { ImagesAPIResponse, ImagesModel } from '~/@types/Banner';
 import { getBannerImage } from '~/services/util';
+import { CardDichVuModel, Categories } from './types';
 
 interface HomeProps {
   bannerMd?: ImagesModel[];
   bannerLg?: ImagesModel[];
+  dichVuNoiBat: CardDichVuModel[];
 }
 
-export default function Home({ bannerMd, bannerLg }: HomeProps) {
+export default function Home({ bannerMd, bannerLg, dichVuNoiBat }: HomeProps) {
   return (
     <>
       {/* <div>
@@ -56,7 +58,7 @@ export default function Home({ bannerMd, bannerLg }: HomeProps) {
           </Text>
         </Section>
       </Container>
-      <TrangChu />
+      <TrangChu dichVuNoiBat={dichVuNoiBat} />
     </>
   );
 }
@@ -71,10 +73,20 @@ export const getStaticProps = async () => {
 
   // const resultBannerMobile = bannerMobile ? getBannerImage(bannerMobile) : [];
 
+  const dichVuNoiBat = await axiosWrapper
+    .get<CardDichVuModel[]>('/posts', {
+      params: {
+        categories: Categories.DichVuNoiBat,
+        per_page: 8,
+      },
+    })
+    .then(res => res.data);
+
   return {
     props: {
       bannerMd: [],
       bannerLg: [],
+      dichVuNoiBat,
     },
   };
 };

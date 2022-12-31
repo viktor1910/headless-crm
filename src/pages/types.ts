@@ -17,6 +17,7 @@ export interface CardDichVuModel {
     feature_image_alt: string;
     feature_image_url: string;
   };
+  categories?: Array<number>;
 }
 
 export interface BaiVietDichVuModel {
@@ -31,4 +32,8 @@ export interface BaiVietDichVuModel {
   excerpt?: {
     rendered: string;
   };
+}
+
+export interface CategoriesModel {
+  name: string;
 }

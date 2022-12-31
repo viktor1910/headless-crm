@@ -14,80 +14,99 @@ import sl3 from '../../../public/img/Artboard-4.png';
 import imgCol from '../../../public/img/leQuyen.webp';
 import imgNone from '../../../public/img/etd1.webp';
 import Slider from 'react-slick';
-const TrangChu = () => {
-  const settings = {
-    dots: true,
-    infinite: true,
-    speed: 500,
-    slidesToShow: 1,
-    slidesToScroll: 1,
-  };
-  const slider = {
-    dots: true,
-    infinite: false,
-    speed: 500,
-    slidesToShow: 3,
-    slidesToScroll: 3,
-    responsive: [
-      {
-        breakpoint: 1024,
-        settings: {
-          slidesToShow: 3,
-          slidesToScroll: 3,
-          infinite: true,
-          dots: true,
-        },
+import { CardDichVuModel } from '~/pages/types';
+import Link from 'next/link';
+
+const settings = {
+  dots: true,
+  infinite: true,
+  speed: 500,
+  slidesToShow: 1,
+  slidesToScroll: 1,
+};
+const slider = {
+  dots: true,
+  infinite: false,
+  speed: 500,
+  slidesToShow: 3,
+  slidesToScroll: 3,
+  responsive: [
+    {
+      breakpoint: 1024,
+      settings: {
+        slidesToShow: 3,
+        slidesToScroll: 3,
+        infinite: true,
+        dots: true,
       },
-      {
-        breakpoint: 600,
-        settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1,
-          initialSlide: 1,
-        },
+    },
+    {
+      breakpoint: 600,
+      settings: {
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        initialSlide: 1,
       },
-      {
-        breakpoint: 480,
-        settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1,
-        },
+    },
+    {
+      breakpoint: 480,
+      settings: {
+        slidesToShow: 1,
+        slidesToScroll: 1,
       },
-    ],
-  };
-  const simpleSlider = {
-    dots: true,
-    infinite: false,
-    speed: 500,
-    slidesToShow: 1,
-    slidesToScroll: 1,
-    responsive: [
-      {
-        breakpoint: 1024,
-        settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1,
-          infinite: true,
-          dots: true,
-        },
+    },
+  ],
+};
+const simpleSlider = {
+  dots: true,
+  infinite: false,
+  speed: 500,
+  slidesToShow: 1,
+  slidesToScroll: 1,
+  responsive: [
+    {
+      breakpoint: 1024,
+      settings: {
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        infinite: true,
+        dots: true,
       },
-      {
-        breakpoint: 600,
-        settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1,
-          initialSlide: 1,
-        },
+    },
+    {
+      breakpoint: 600,
+      settings: {
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        initialSlide: 1,
       },
-      {
-        breakpoint: 480,
-        settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1,
-        },
+    },
+    {
+      breakpoint: 480,
+      settings: {
+        slidesToShow: 1,
+        slidesToScroll: 1,
       },
-    ],
-  };
+    },
+  ],
+};
+
+interface TrangChuProps {
+  dichVuNoiBat: CardDichVuModel[];
+}
+
+function chunkArray(arr: Array<any>, n: number) {
+  var chunkLength = Math.max(arr.length / n, 1);
+  var chunks = [];
+  for (var i = 0; i < n; i++) {
+    if (chunkLength * (i + 1) <= arr.length) chunks.push(arr.slice(chunkLength * i, chunkLength * (i + 1)));
+  }
+
+  console.log(chunks);
+  return chunks;
+}
+
+const TrangChu = ({ dichVuNoiBat }: TrangChuProps) => {
   return (
     <>
       <Container fluid>
@@ -150,78 +169,41 @@ const TrangChu = () => {
         <Row className={styles.rowService}>
           <Col lg={4} md={12}>
             <Row xs={2}>
-              <Col lg={6} style={{ padding: '0' }} className={styles.colServices}>
-                <Card className={styles.cardServices}>
-                  <Image src={demoImage} alt="" width={200} height={250} style={{ padding: '10px 5px' }} />
-                  <Card.Body style={{ padding: '0' }}>
-                    <Text
-                      type="title"
+              {chunkArray(dichVuNoiBat, 2)[0].map(dichvu => {
+                return (
+                  <Col lg={6} style={{ padding: '0' }} className={styles.colServices} key={dichvu?.slug}>
+                    <Link
+                      href={`/bai-viet/${dichvu?.slug}`}
                       style={{
-                        textAlign: 'center',
-                        color: '#666',
-                        marginTop: '10px',
-                        marginBottom: '.5em',
+                        textDecoration: 'none',
                       }}
                     >
-                      Some quick example text 1
-                    </Text>
-                  </Card.Body>
-                </Card>
-              </Col>
-              <Col lg={6} style={{ padding: '0' }}>
-                <Card className={styles.cardServices}>
-                  <Image src={demoImage} alt="" width={200} height={250} style={{ padding: '10px 5px' }} />
-                  <Card.Body style={{ padding: '0' }}>
-                    <Text
-                      type="title"
-                      style={{
-                        textAlign: 'center',
-                        color: '#666',
-                        marginTop: '10px',
-                        marginBottom: '.5em',
-                      }}
-                    >
-                      Some quick example text 1
-                    </Text>
-                  </Card.Body>
-                </Card>
-              </Col>
-              <Col lg={6} style={{ padding: '0' }}>
-                <Card className={styles.cardServices}>
-                  <Image src={demoImage} alt="" width={200} height={250} style={{ padding: '10px 5px' }} />
-                  <Card.Body style={{ padding: '0' }}>
-                    <Text
-                      type="title"
-                      style={{
-                        textAlign: 'center',
-                        color: '#666',
-                        marginTop: '10px',
-                        marginBottom: '.5em',
-                      }}
-                    >
-                      Some quick example text 1
-                    </Text>
-                  </Card.Body>
-                </Card>
-              </Col>
-              <Col lg={6} className={styles.colServices} style={{ padding: '0' }}>
-                <Card className={styles.cardServices}>
-                  <Image src={demoImage} alt="" width={200} height={250} style={{ padding: '10px 5px' }} />
-                  <Card.Body style={{ padding: '0' }}>
-                    <Text
-                      type="title"
-                      style={{
-                        textAlign: 'center',
-                        color: '#666',
-                        marginTop: '10px',
-                        marginBottom: '.5em',
-                      }}
-                    >
-                      Some quick example text 1
-                    </Text>
-                  </Card.Body>
-                </Card>
-              </Col>
+                      <Card className={styles.cardServices}>
+                        <Image
+                          src={dichvu?.acf?.feature_image_url || ''}
+                          alt={dichvu?.acf?.feature_image_alt || ''}
+                          width={200}
+                          height={250}
+                          style={{ padding: '10px 5px' }}
+                        />
+                        <Card.Body style={{ padding: '0' }}>
+                          <Text
+                            type="body"
+                            style={{
+                              textAlign: 'center',
+                              color: '#666',
+                              marginTop: '10px',
+                              marginBottom: '.5em',
+                            }}
+                          >
+                            {dichvu?.title.rendered}
+                          </Text>
+                        </Card.Body>
+                      </Card>
+                    </Link>
+                  </Col>
+                );
+              })}
             </Row>
           </Col>
           <Col lg={4} className={styles.colImage}>
@@ -231,78 +213,41 @@ const TrangChu = () => {
           </Col>
           <Col lg={4} md={12}>
             <Row xs={2}>
-              <Col lg={6} style={{ padding: '0' }} className={styles.colServices}>
-                <Card className={styles.cardServices}>
-                  <Image src={demoImage} alt="" width={200} height={250} style={{ padding: '10px 5px' }} />
-                  <Card.Body style={{ padding: '0' }}>
-                    <Text
-                      type="title"
+              {chunkArray(dichVuNoiBat, 2)[1]?.map(dichvu => {
+                return (
+                  <Col lg={6} style={{ padding: '0' }} className={styles.colServices} key={dichvu?.slug}>
+                    <Link
+                      href={`/bai-viet/${dichvu?.slug}`}
                       style={{
-                        textAlign: 'center',
-                        color: '#666',
-                        marginTop: '10px',
-                        marginBottom: '.5em',
+                        textDecoration: 'none',
                       }}
                     >
-                      Some quick example text 1
-                    </Text>
-                  </Card.Body>
-                </Card>
-              </Col>
-              <Col lg={6} style={{ padding: '0' }}>
-                <Card className={styles.cardServices}>
-                  <Image src={demoImage} alt="" width={200} height={250} style={{ padding: '10px 5px' }} />
-                  <Card.Body style={{ padding: '0' }}>
-                    <Text
-                      type="title"
-                      style={{
-                        textAlign: 'center',
-                        color: '#666',
-                        marginTop: '10px',
-                        marginBottom: '.5em',
-                      }}
-                    >
-                      Some quick example text 1
-                    </Text>
-                  </Card.Body>
-                </Card>
-              </Col>
-              <Col lg={6} style={{ padding: '0' }}>
-                <Card className={styles.cardServices}>
-                  <Image src={demoImage} alt="" width={200} height={250} style={{ padding: '10px 5px' }} />
-                  <Card.Body style={{ padding: '0' }}>
-                    <Text
-                      type="title"
-                      style={{
-                        textAlign: 'center',
-                        color: '#666',
-                        marginTop: '10px',
-                        marginBottom: '.5em',
-                      }}
-                    >
-                      Some quick example text 1
-                    </Text>
-                  </Card.Body>
-                </Card>
-              </Col>
-              <Col lg={6} className={styles.colServices} style={{ padding: '0' }}>
-                <Card className={styles.cardServices}>
-                  <Image src={demoImage} alt="" width={200} height={250} style={{ padding: '10px 5px' }} />
-                  <Card.Body style={{ padding: '0' }}>
-                    <Text
-                      type="title"
-                      style={{
-                        textAlign: 'center',
-                        color: '#666',
-                        marginTop: '10px',
-                        marginBottom: '.5em',
-                      }}
-                    >
-                      Some quick example text 1
-                    </Text>
-                  </Card.Body>
-                </Card>
-              </Col>
+                      <Card className={styles.cardServices}>
+                        <Image
+                          src={dichvu?.acf?.feature_image_url || ''}
+                          alt={dichvu?.acf?.feature_image_alt || ''}
+                          width={200}
+                          height={250}
+                          style={{ padding: '10px 5px' }}
+                        />
+                        <Card.Body style={{ padding: '0' }}>
+                          <Text
+                            type="body"
+                            style={{
+                              textAlign: 'center',
+                              color: '#666',
+                              marginTop: '10px',
+                              marginBottom: '.5em',
+                            }}
+                          >
+                            {dichvu?.title.rendered}
+                          </Text>
+                        </Card.Body>
+                      </Card>
+                    </Link>
+                  </Col>
+                );
+              })}
             </Row>
           </Col>
         </Row>

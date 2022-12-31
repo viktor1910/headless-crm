@@ -6,6 +6,7 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import Offcanvas from 'react-bootstrap/Offcanvas';
 import styles from '../index.module.scss';
+import Link from 'next/link';
 const Header = () => {
   const [scrollY, setScrollY] = React.useState(0);
 
@@ -38,16 +39,14 @@ const Header = () => {
           aria-labelledby="offcanvasNavbarLabel-expand-lg"
           placement="start"
         >
-          <Offcanvas.Header closeButton>
-            <Offcanvas.Title id="offcanvasNavbarLabel-expand-lg">LOGO</Offcanvas.Title>
-          </Offcanvas.Header>
+          <Offcanvas.Header closeButton></Offcanvas.Header>
           <Offcanvas.Body>
             <Nav className={styles.headerMenu}>
-              <Nav.Link href="/">Trang Chủ</Nav.Link>
-              <Nav.Link href="dich-vu">Dịch Vụ</Nav.Link>
-              <Nav.Link href="khuyen-mai">Khuyến Mãi</Nav.Link>
-              <Nav.Link href="dat-lich">Đặt Lịch</Nav.Link>
-              <Nav.Link href="lien-he">Liên Hệ</Nav.Link>
+              <Link href="/">Trang Chủ</Link>
+              <Link href="/dich-vu">Dịch Vụ</Link>
+              <Link href="/khuyen-mai">Khuyến Mãi</Link>
+              <Link href="/dat-lich">Đặt Lịch</Link>
+              <Link href="/lien-he">Liên Hệ</Link>
             </Nav>
           </Offcanvas.Body>
         </Navbar.Offcanvas>
