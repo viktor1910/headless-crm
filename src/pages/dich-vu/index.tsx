@@ -81,7 +81,7 @@ const DichVu = ({ data, dichVuNoiBat, danhMucDichVu }: DichVuProps) => {
           </Slider>
         </Container>
       </Section>
-      <Section title="Dịch Vụ Nổi Bật" subTitle="">
+      <Section title="Danh Mục Dịch Vụ" subTitle="">
         <Container fluid>
           <Slider {...settingDanhMuc}>
             {danhMucDichVu.map(dichvu => (
