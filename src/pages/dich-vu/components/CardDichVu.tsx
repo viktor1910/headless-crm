@@ -23,8 +23,8 @@ const defineClassNameImg = (type: 'danh-muc' | 'noi-bat') => {
 
 const CardDichVu = ({ data, type }: CardDichVuProps) => {
   return (
-    <Card className={styles.cardContainer}>
-      <div className={defineClassNameImg(type)}>
+    <Card className={type === 'danh-muc' ? styles.danhMucContainer : styles.cardContainer}>
+      <div className={type === 'danh-muc' ? styles.imgDanhMuc : styles.imgNoiBat}>
         {data.acf?.feature_image_url && (
           <Image
             src={data.acf?.feature_image_url}

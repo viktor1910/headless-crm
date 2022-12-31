@@ -3,30 +3,24 @@ import React from 'react';
 import axiosWrapper from '~/services/axiosConfig';
 import { BaiVietDichVuModel } from '../types';
 import Text from '~/components/Text';
-import Section from '~/components/Section';
+import styles from './index.module.scss';
 
 interface BaiVietDichVuProps {
   data: BaiVietDichVuModel;
 }
 
 const BaiVietDichVu = ({ data }: BaiVietDichVuProps) => {
+  console.log(data);
   return (
-    <div>
-      <Text
-        type="title"
-        style={{
-          textAlign: 'center',
-        }}
-      >
+    <div className={styles.container}>
+      <div className={styles.titleContainer}>
         <span dangerouslySetInnerHTML={{ __html: data.title.rendered }} />
-      </Text>
-      <Text type="body">
-        <span dangerouslySetInnerHTML={{ __html: data.excerpt?.rendered || '' }} />
-      </Text>
+      </div>
+      <span dangerouslySetInnerHTML={{ __html: data.excerpt?.rendered || '' }} />
       <hr
         style={{
           width: '20%',
-          margin: '20px auto',
+          margin: '50px auto',
         }}
       />
       <span dangerouslySetInnerHTML={{ __html: data.content.rendered }} />

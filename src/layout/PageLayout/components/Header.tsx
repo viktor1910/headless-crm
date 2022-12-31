@@ -31,7 +31,7 @@ const Header = () => {
           <Navbar.Brand href="#">
             <Image src={logo} alt="" width={130} height={100} />
           </Navbar.Brand>
-          <span className={styles.headerSearchIcon}>Search</span>
+          <span className={styles.headerSearchIcon}></span>
         </div>
         <Navbar.Offcanvas
           id="offcanvasNavbar-expand-lg"

@@ -14,7 +14,7 @@ import { CardDichVuModel, Categories } from '../types';
 const settings = {
   dots: true,
   infinite: false,
-  slidesToShow: 5,
+  slidesToShow: 4,
   slidesToScroll: 3,
   initialSlide: 0,
   responsive: [

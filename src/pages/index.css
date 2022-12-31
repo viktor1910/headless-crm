@@ -1,5 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Philosopher&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
 html,
 body,
 div,
@@ -88,6 +88,7 @@ video {
   font: inherit;
   vertical-align: baseline;
   height: auto;
+  font-family: 'Montserrat', sans-serif;
 }
 /* HTML5 display-role reset for older browsers */
 article,

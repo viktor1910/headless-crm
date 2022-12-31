@@ -1,0 +1,24 @@
+.container {
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+  @media screen and (min-width: 992px) {
+    width: 80%;
+    margin: auto;
+  }
+}
+
+.titleContainer {
+  font-family: 'Philosopher', sans-serif;
+  line-height: 1.4;
+  letter-spacing: normal;
+  font-size: 25px;
+  margin-top: 0;
+  margin-bottom: 50px;
+  text-align: center;
+  @media screen and (min-width: 992px) {
+    margin: 50px auto;
+    font-size: 2.5rem;
+  }
+}
