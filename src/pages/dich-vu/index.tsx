@@ -6,10 +6,10 @@ import Slider from 'react-slick';
 import { Container } from 'react-bootstrap';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import CardDichVu from './components/CardDichVu';
-import CardPostDichVu from './components/CardPostDichVu';
+import CardDichVu from '../../components/DichVu/components/CardDichVu';
+import CardPostDichVu from '../../components/DichVu/components/CardPostDichVu';
 import axiosWrapper from '~/services/axiosConfig';
-import { CardDichVuModel, Categories } from '../types';
+import { CardDichVuModel, Categories } from '../../services/types';
 
 const settings = {
   dots: true,
@@ -95,7 +95,7 @@ const DichVu = ({ data, dichVuNoiBat, danhMucDichVu }: DichVuProps) => {
 
       <Section title="Dịch Vụ" subTitle="">
         <Row className={styles.styledRow}>
-          {data.map(d => (
+          {data?.map(d => (
             <Col xl={4} lg={6} sm={12} className={styles.styledCol} key={d.slug}>
               <CardPostDichVu data={d} />
             </Col>
@@ -109,23 +109,25 @@ const DichVu = ({ data, dichVuNoiBat, danhMucDichVu }: DichVuProps) => {
 export default DichVu;
 
 export const getServerSideProps = async () => {
-  const res = await axiosWrapper
-    .get<CardDichVuModel[]>('/posts', {
-      params: {
-        categories: Categories.DichVu,
-        per_page: 10,
-      },
-    })
-    .then(res => res.data);
-  const dichVuNoiBat = await axiosWrapper
-    .get<CardDichVuModel[]>('/posts', {
-      params: {
-        categories: Categories.DichVuNoiBat,
-        per_page: 10,
-      },
-    })
-    .then(res => res.data);
-  const danhMucDichVu = await axiosWrapper.get<CardDichVuModel[]>('/danh-muc-dich-vu').then(res => res.data);
+  const res =
+    (await axiosWrapper
+      .get<CardDichVuModel[]>('/posts', {
+        params: {
+          categories: Categories.DichVu,
+          per_page: 10,
+        },
+      })
+      .then(res => res.data)) || [];
+  const dichVuNoiBat =
+    (await axiosWrapper
+      .get<CardDichVuModel[]>('/posts', {
+        params: {
+          categories: Categories.DichVuNoiBat,
+          per_page: 10,
+        },
+      })
+      .then(res => res.data)) || [];
+  const danhMucDichVu = (await axiosWrapper.get<CardDichVuModel[]>('/danh-muc-dich-vu').then(res => res.data)) || [];
   return {
     props: {
       data: res,

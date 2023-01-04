@@ -3,7 +3,7 @@ import { Card, Button } from 'react-bootstrap';
 import styles from './CardPostDichVu.module.scss';
 import Text from '~/components/Text';
 import Image from 'next/image';
-import { CardDichVuModel } from '~/pages/types';
+import { CardDichVuModel } from '~/services/types';
 import axiosWrapper from '~/services/axiosConfig';
 import Link from 'next/link';
 

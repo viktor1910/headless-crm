@@ -6,7 +6,7 @@ import { Col, Container, Row } from 'react-bootstrap';
 import Image from 'next/image';
 import { GetServerSideProps } from 'next';
 import axiosWrapper from '~/services/axiosConfig';
-import { BaiVietDichVuModel, Categories } from '../types';
+import { BaiVietDichVuModel, Categories } from '../../services/types';
 import Link from 'next/link';
 
 interface KhuyenMaiProps {

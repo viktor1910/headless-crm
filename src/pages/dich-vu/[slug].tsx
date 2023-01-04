@@ -7,9 +7,9 @@ import { Container } from 'react-bootstrap';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import axiosWrapper from '~/services/axiosConfig';
-import { CardDichVuModel, Categories, CategoriesModel } from '~/pages/types';
-import CardDichVu from './components/CardDichVu';
-import CardPostDichVu from './components/CardPostDichVu';
+import { CardDichVuModel, Categories, CategoriesModel } from '~/services/types';
+import CardDichVu from '../../components/DichVu/components/CardDichVu';
+import CardPostDichVu from '../../components/DichVu/components/CardPostDichVu';
 import { GetServerSideProps } from 'next/types';
 
 const settings = {

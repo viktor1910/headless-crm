@@ -7,7 +7,7 @@ import styles from './index.module.scss';
 import Text from '~/components/Text';
 import Card from 'react-bootstrap/Card';
 import Slider from 'react-slick';
-import { CardDichVuModel } from '~/pages/types';
+import { CardDichVuModel } from '~/services/types';
 import Link from 'next/link';
 import { ImagesAPIResponse, ImagesModel, ReviewModel } from '~/@types/Banner';
 import { getImages } from '~/services/util';

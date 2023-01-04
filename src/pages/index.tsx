@@ -6,7 +6,7 @@ import TrangChu from '~/components/TrangChu';
 import axiosWrapper from '~/services/axiosConfig';
 import { ImagesAPIResponse, ImagesModel, ReviewModel } from '~/@types/Banner';
 import { getImages } from '~/services/util';
-import { CardDichVuModel, Categories } from './types';
+import { CardDichVuModel, Categories } from '../services/types';
 
 interface HomeProps {
   resultBannerDesktop: ImagesModel[];

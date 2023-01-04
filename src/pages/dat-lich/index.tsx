@@ -9,7 +9,7 @@ import imgDatLich from '../../../public/img/imgDatLich.webp';
 import { ImagesAPIResponse, ImagesModel } from '~/@types/Banner';
 import axiosWrapper from '~/services/axiosConfig';
 import { getImages } from '~/services/util';
-import { CardDichVuModel, Categories } from '../types';
+import { CardDichVuModel, Categories } from '../../services/types';
 
 interface DatLichProps {
   resultCenteringImg: ImagesModel[];

@@ -1,7 +1,7 @@
 import { GetServerSideProps } from 'next';
 import React from 'react';
 import axiosWrapper from '~/services/axiosConfig';
-import { BaiVietDichVuModel } from '../types';
+import { BaiVietDichVuModel } from '../../services/types';
 import Text from '~/components/Text';
 import styles from './index.module.scss';
 
