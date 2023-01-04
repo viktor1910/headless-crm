@@ -1,7 +1,7 @@
 import DomParser from 'dom-parser';
-import { ImagesAPIResponse, ImagesModel } from '~/@types/Banner';
+import { ImagesAPIResponse, ImagesModel, ReviewModel } from '~/@types/Banner';
 
-export const getBannerImage = (images: ImagesAPIResponse) => {
+export const getImages = (images: ImagesAPIResponse | ReviewModel) => {
   const imagesFromText = new DomParser().parseFromString(images.content.rendered);
 
   const domImage = imagesFromText.getElementsByTagName('img');

@@ -108,7 +108,7 @@ const DichVu = ({ data, dichVuNoiBat, danhMucDichVu }: DichVuProps) => {
 
 export default DichVu;
 
-export const getStaticProps = async () => {
+export const getServerSideProps = async () => {
   const res = await axiosWrapper
     .get<CardDichVuModel[]>('/posts', {
       params: {
@@ -132,6 +132,5 @@ export const getStaticProps = async () => {
       dichVuNoiBat,
       danhMucDichVu,
     },
-    revalidate: 1,
   };
 };

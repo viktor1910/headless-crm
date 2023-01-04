@@ -29,7 +29,7 @@ const Banner = ({ bannerMd, bannerLg }: CarouselProps) => {
           {bannerLg?.map(image => (
             <div key={image.src} className={styles.carouselItem}>
               <div className={styles.image}>
-                <Image src={image.src} alt={image.alt} fill />
+                <img src={image.src} alt={image.alt} />
               </div>
             </div>
           ))}
@@ -40,7 +40,7 @@ const Banner = ({ bannerMd, bannerLg }: CarouselProps) => {
           {bannerMd?.map(image => (
             <div key={image.src}>
               <div className={styles.image}>
-                <Image src={image.src} alt={image.alt} fill />
+                <img src={image.src} alt={image.alt} />
               </div>
             </div>
           ))}

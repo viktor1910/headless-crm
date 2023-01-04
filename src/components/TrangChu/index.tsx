@@ -16,6 +16,8 @@ import imgNone from '../../../public/img/etd1.webp';
 import Slider from 'react-slick';
 import { CardDichVuModel } from '~/pages/types';
 import Link from 'next/link';
+import { ImagesAPIResponse, ImagesModel, ReviewModel } from '~/@types/Banner';
+import { getImages } from '~/services/util';
 
 const settings = {
   dots: true,
@@ -93,6 +95,11 @@ const simpleSlider = {
 
 interface TrangChuProps {
   dichVuNoiBat: CardDichVuModel[];
+  resultWelcome: ImagesModel[];
+  resultCenteringImg: ImagesModel[];
+  resultWelcomeText: ImagesAPIResponse;
+  resultCenteringMain: string;
+  review: ReviewModel[];
 }
 
 function chunkArray(arr: Array<any>, n: number) {
@@ -101,23 +108,26 @@ function chunkArray(arr: Array<any>, n: number) {
   for (var i = 0; i < n; i++) {
     if (chunkLength * (i + 1) <= arr.length) chunks.push(arr.slice(chunkLength * i, chunkLength * (i + 1)));
   }
-
-  console.log(chunks);
   return chunks;
 }
 
-const TrangChu = ({ dichVuNoiBat }: TrangChuProps) => {
+const TrangChu = ({
+  dichVuNoiBat,
+  resultWelcome,
+  resultCenteringImg,
+  resultCenteringMain,
+  review,
+  resultWelcomeText,
+}: TrangChuProps) => {
   return (
     <>
       <Container fluid>
         <Row>
           <Col lg={6} className={styles.textReview}>
             <Slider {...settings} className={styles.customReview}>
-              <Image src={sl1} alt="First slide" />
-
-              <Image src={sl2} alt="Second slide" />
-
-              <Image src={sl3} alt="Third slide" />
+              {resultWelcome.map(result => (
+                <img src={result.src} alt={result.alt} key={result.src} />
+              ))}
             </Slider>
           </Col>
           <Col lg={6} className={styles.textReview}>
@@ -128,7 +138,8 @@ const TrangChu = ({ dichVuNoiBat }: TrangChuProps) => {
                 color: '#333',
               }}
             >
-              <strong>5</strong>Chi Nhánh Tại TP.HCM,Hà Nội,Đà Nẵng
+              <strong>{resultWelcomeText.acf?.first_number}</strong>
+              <span>{resultWelcomeText.acf?.first_label}</span>
             </Text>
             <Text
               type="body"
@@ -137,7 +148,8 @@ const TrangChu = ({ dichVuNoiBat }: TrangChuProps) => {
                 color: '#333',
               }}
             >
-              <strong>100+</strong>Dịch Vụ Làm Đẹp Hàng Đầu
+              <strong>{resultWelcomeText.acf?.second_number}+</strong>
+              <span>{resultWelcomeText.acf?.second_label}</span>
             </Text>
             <Text
               type="body"
@@ -146,7 +158,8 @@ const TrangChu = ({ dichVuNoiBat }: TrangChuProps) => {
                 color: '#333',
               }}
             >
-              <strong>1.000.000+</strong>Lượt Khách Mỗi Năm
+              <strong>{new Intl.NumberFormat().format(resultWelcomeText.acf?.third_number || 0)}+</strong>
+              <span>{resultWelcomeText.acf?.third_label}</span>
             </Text>
           </Col>
         </Row>
@@ -179,11 +192,9 @@ const TrangChu = ({ dichVuNoiBat }: TrangChuProps) => {
                       }}
                     >
                       <Card className={styles.cardServices}>
-                        <Image
+                        <img
                           src={dichvu?.acf?.feature_image_url || ''}
                           alt={dichvu?.acf?.feature_image_alt || ''}
-                          width={200}
-                          height={250}
                           style={{ padding: '10px 5px' }}
                         />
                         <Card.Body style={{ padding: '0' }}>
@@ -208,7 +219,7 @@ const TrangChu = ({ dichVuNoiBat }: TrangChuProps) => {
           </Col>
           <Col lg={4} className={styles.colImage}>
             <Row>
-              <Image src={imgCenter} alt="" />
+              <img src={resultCenteringMain} alt="" />
             </Row>
           </Col>
           <Col lg={4} md={12}>
@@ -223,11 +234,9 @@ const TrangChu = ({ dichVuNoiBat }: TrangChuProps) => {
                       }}
                     >
                       <Card className={styles.cardServices}>
-                        <Image
+                        <img
                           src={dichvu?.acf?.feature_image_url || ''}
                           alt={dichvu?.acf?.feature_image_alt || ''}
-                          width={200}
-                          height={250}
                           style={{ padding: '10px 5px' }}
                         />
                         <Card.Body style={{ padding: '0' }}>
@@ -270,87 +279,69 @@ const TrangChu = ({ dichVuNoiBat }: TrangChuProps) => {
         <Row className={styles.imgNone}>
           <Col>
             <Slider {...slider} className={styles.slickSlider}>
-              <div className={styles.cardSlider}>
-                <Image src={imgNone} alt="" />
-              </div>
-              <div className={styles.cardSlider}>
-                <Image src={imgNone} alt="" />
-              </div>
-              <div className={styles.cardSlider}>
-                <Image src={imgNone} alt="" />
-              </div>
-              <div className={styles.cardSlider}>
-                <Image src={imgNone} alt="" />
-              </div>
-              <div className={styles.cardSlider}>
-                <Image src={imgNone} alt="" />
-              </div>
-              <div className={styles.cardSlider}>
-                <Image src={imgNone} alt="" />
-              </div>
+              {resultCenteringImg.map(result => (
+                <div className={styles.cardSlider} key={result.src}>
+                  <img src={result.src} alt={result.alt} />
+                </div>
+              ))}
             </Slider>
           </Col>
         </Row>
         <Row className={styles.customSlider}>
           <Col lg={12}>
             <Slider {...simpleSlider}>
-              <div className={styles.cardSlider}>
-                <Row>
-                  <Col lg={8} sm={12} className={styles.cardCustomer}>
-                    <Image src={imgCol} alt="" />
-                  </Col>
-                  <Col lg={4} sm={12}>
-                    <div className={styles.textSlider}>
-                      <Text
-                        type="body"
-                        style={{
-                          textAlign: 'center',
-                          color: '#666',
-                          marginTop: '10px',
-                          marginBottom: '.5em',
-                        }}
-                      >
-                        Quyên luôn cố gắng giữ cho vẻ ngoài rạng rỡ và hoàn thiện để xuất hiện thật tuyệt vời trước công
-                        chúng. Và Shynh Premium chính là nơi Quyên chọn để giữ cho làn da luôn mướt mịn, trắng khỏe, duy
-                        trì vóc dáng thon thả, quyến rũ. Shynh Premium chính là ngôi nhà thứ 2 giúp Quyên lưu giữ thanh
-                        xuân và tỏa sáng bất cứ lúc nào
-                      </Text>
-                      <Text
-                        type="title"
-                        style={{
-                          textAlign: 'center',
-                          color: '#666',
-                          marginTop: '10px',
-                          marginBottom: '.5em',
-                        }}
-                      >
-                        Lệ Quyên
-                      </Text>
-                      <Text
-                        type="body"
-                        style={{
-                          textAlign: 'center',
-                          color: '#666',
-                          marginTop: '10px',
-                          marginBottom: '.5em',
-                        }}
-                      >
-                        Singer
-                      </Text>
-                    </div>
-                  </Col>
-                </Row>
-              </div>
-              <div className={styles.cardSlider}>
-                <Row>
-                  <Col lg={8} sm={12} className={styles.cardCustomer}>
-                    <Image src={imgCol} alt="" />
-                  </Col>
-                  <Col lg={4} sm={12}>
-                    123
-                  </Col>
-                </Row>
-              </div>
+              {review.map((result, index) => {
+                let img;
+                const reviewImg = getImages(result);
+
+                img = reviewImg ? reviewImg[0].src : '';
+                return (
+                  <div className={styles.cardSlider} key={`${result.acf?.author}-${index}`}>
+                    <Row>
+                      <Col lg={8} sm={12} className={styles.cardCustomer}>
+                        <img src={img} alt="" />
+                      </Col>
+                      <Col lg={4} sm={12}>
+                        <div className={styles.textSlider}>
+                          <Text
+                            type="body"
+                            style={{
+                              textAlign: 'center',
+                              color: '#666',
+                              marginTop: '10px',
+                              marginBottom: '.5em',
+                            }}
+                          >
+                            {result.acf?.review}
+                          </Text>
+                          <Text
+                            type="title"
+                            style={{
+                              textAlign: 'center',
+                              color: '#666',
+                              marginTop: '10px',
+                              marginBottom: '.5em',
+                            }}
+                          >
+                            {result.acf?.author}
+                          </Text>
+                          <Text
+                            type="body"
+                            style={{
+                              textAlign: 'center',
+                              color: '#666',
+                              marginTop: '10px',
+                              marginBottom: '.5em',
+                            }}
+                          >
+                            {result.acf?.job_title}
+                          </Text>
+                        </div>
+                      </Col>
+                    </Row>
+                  </div>
+                );
+              })}
             </Slider>
           </Col>
         </Row>

@@ -4,74 +4,79 @@ import { Container } from 'react-bootstrap';
 import Section from '~/components/Section';
 import TrangChu from '~/components/TrangChu';
 import axiosWrapper from '~/services/axiosConfig';
-import { ImagesAPIResponse, ImagesModel } from '~/@types/Banner';
-import { getBannerImage } from '~/services/util';
+import { ImagesAPIResponse, ImagesModel, ReviewModel } from '~/@types/Banner';
+import { getImages } from '~/services/util';
 import { CardDichVuModel, Categories } from './types';
 
 interface HomeProps {
-  bannerMd?: ImagesModel[];
-  bannerLg?: ImagesModel[];
+  resultBannerDesktop: ImagesModel[];
+  resultBannerMobile: ImagesModel[];
+  resultAbout: string;
+  resultWelcome: ImagesModel[];
+  resultWelcomeText: ImagesAPIResponse;
+  resultCenteringImg: ImagesModel[];
+  resultCenteringMain: string;
+  review: ReviewModel[];
   dichVuNoiBat: CardDichVuModel[];
 }
 
-export default function Home({ bannerMd, bannerLg, dichVuNoiBat }: HomeProps) {
+export default function Home({
+  resultBannerDesktop,
+  resultBannerMobile,
+  resultAbout,
+  resultWelcome,
+  resultWelcomeText,
+  resultCenteringImg,
+  resultCenteringMain,
+  review,
+  dichVuNoiBat,
+}: HomeProps) {
   return (
     <>
-      {/* <div>
-        <Banner bannerLg={bannerLg} bannerMd={bannerMd} />
-      </div> */}
+      <div>
+        <Banner bannerLg={resultBannerDesktop} bannerMd={resultBannerMobile} />
+      </div>
       <Container>
-        <Section title="CHÀO MỪNG BẠN ĐẾN VỚI" subTitle="VIỆN THẨM MỸ NÂNG CƠ CÔNG NGHỆ CAO HÀNG ĐẦU CHÂU Á">
-          <Text
-            type="body"
+        <Section title="CHÀO MỪNG BẠN ĐẾN VỚI" subTitle={resultWelcomeText.acf?.welcome_title}>
+          <span
+            dangerouslySetInnerHTML={{ __html: resultAbout || '' }}
             style={{
               textAlign: 'center',
               color: '#666',
+              fontSize: '16px',
             }}
-          >
-            Viện thẩm mỹ Công nghệ cao SHYNH PREMIUM ra đời năm 2018 với sứ mệnh mang đến cho quý khách hàng những trải
-            nghiệm làm đẹp chất lượng và cao cấp nhất. Tự hào là Viện thẩm mỹ dẫn đầu xu thế làm đẹp với 5 chi nhánh
-            trên cả nước, Shynh Premium hiện đang sở hữu hơn 10 Công nghệ cao hàng đầu Thế giới, hân hạnh đồng hành
-            trong hành trình làm đẹp của hàng triệu phụ nữ Việt Nam.
-          </Text>
-          <Text
-            type="body"
-            style={{
-              textAlign: 'center',
-              color: '#666',
-              marginTop: '10px',
-            }}
-          >
-            Với lối kiến trúc ấn tượng và sang trọng; quy tụ đội ngũ bác sĩ nội khoa hàng đầu, kỹ thuật viên tay nghề
-            cao, giàu kinh nghiệm, quý khách hàng sẽ được tận hưởng một không gian thư giãn đẳng cấp 5 sao cũng như các
-            dịch vụ hoàn hảo tại SHYNH PREMIUM.
-          </Text>
-          <Text
-            type="body"
-            style={{
-              textAlign: 'center',
-              color: '#666',
-              marginTop: '10px',
-            }}
-          >
-            CHỌN SHYNH LÀ XINH ĐẸP!
-          </Text>
+          />
         </Section>
       </Container>
-      <TrangChu dichVuNoiBat={dichVuNoiBat} />
+      <TrangChu
+        dichVuNoiBat={dichVuNoiBat}
+        resultWelcome={resultWelcome}
+        resultCenteringImg={resultCenteringImg}
+        resultCenteringMain={resultCenteringMain}
+        resultWelcomeText={resultWelcomeText}
+        review={review}
+      />
     </>
   );
 }
 
-export const getStaticProps = async () => {
-  // const res = await axiosWrapper.get<ImagesAPIResponse[]>('/hinh-anh').then(res => res.data);
+export const getServerSideProps = async () => {
+  const res = await axiosWrapper.get<ImagesAPIResponse[]>('/gallery').then(res => res.data);
+  const review = await axiosWrapper.get<ReviewModel[]>('/review').then(res => res.data);
 
-  // const bannerDesktop = res.find(i => i.slug === 'banner-desktop');
-  // const bannerMobile = res.find(i => i.slug === 'banner-mobile');
+  const bannerDesktop = res.find(i => i.slug === 'banner-desktop');
+  const bannerMobile = res.find(i => i.slug === 'banner-mobile');
+  const about = res.find(i => i.slug === 'about');
+  const welcome = res.find(i => i.slug === 'welcome');
+  const centering = res.find(i => i.slug === 'centering');
 
-  // const resultBannerDesktop = bannerDesktop ? getBannerImage(bannerDesktop) : [];
-
-  // const resultBannerMobile = bannerMobile ? getBannerImage(bannerMobile) : [];
+  const resultBannerDesktop = bannerDesktop ? getImages(bannerDesktop) : [];
+  const resultBannerMobile = bannerMobile ? getImages(bannerMobile) : [];
+  const resultAbout = about?.content.rendered;
+  const resultWelcome = welcome ? getImages(welcome) : [];
+  const resultWelcomeText = welcome;
+  const resultCenteringImg = centering ? getImages(centering) : [];
+  const resultCenteringMain = centering?.acf?.center_image;
 
   const dichVuNoiBat = await axiosWrapper
     .get<CardDichVuModel[]>('/posts', {
@@ -84,8 +89,14 @@ export const getStaticProps = async () => {
 
   return {
     props: {
-      bannerMd: [],
-      bannerLg: [],
+      resultBannerDesktop,
+      resultBannerMobile,
+      resultAbout,
+      resultWelcome,
+      resultWelcomeText,
+      resultCenteringImg,
+      resultCenteringMain,
+      review,
       dichVuNoiBat,
     },
   };

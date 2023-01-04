@@ -9,9 +9,9 @@
 .imageBannerMd {
   display: block;
   margin-bottom: 20px;
-  // @media screen and (min-width: 992px) {
-  //   display: none;
-  // }
+  @media screen and (min-width: 992px) {
+    display: none;
+  }
 }
 .image {
   position: relative;
@@ -22,11 +22,12 @@
   max-width: 420px;
   min-height: 540px;
   margin: 0 auto;
-  // @media screen and (min-width: 992px) {
-  //   max-width: unset;
-  // }
+  @media screen and (min-width: 992px) {
+    max-width: unset;
+  }
   img {
-    height: auto !important;
+    width: 100%;
+    height: auto;
   }
 }
 
