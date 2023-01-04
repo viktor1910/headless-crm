@@ -1,3 +1,34 @@
+.container {
+  margin-bottom: 200px;
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+  @media screen and (min-width: 992px) {
+    width: 80%;
+    margin: auto;
+    margin-bottom: 200px;
+  }
+}
+
+.titleContainer {
+  font-family: 'Philosopher', sans-serif;
+  line-height: 1.4;
+  letter-spacing: normal;
+  font-size: 25px;
+  margin-top: 0;
+  margin-bottom: 50px;
+  text-align: center;
+  @media screen and (min-width: 992px) {
+    margin: 50px auto;
+    font-size: 2.5rem;
+  }
+}
+
+.gifContainer {
+  justify-content: center;
+}
+
 .Gif {
   display: flex;
   flex-direction: column;
@@ -5,17 +36,12 @@
   justify-content: center;
   text-align: center;
 }
-.itemGift {
-  width: 33%;
-  display: flex;
-  flex-direction: column;
-  text-align: center;
-  align-items: center;
-  justify-content: center;
-}
 .itemImg {
+  width: 100%;
+  img {
+    width: 100%;
+  }
 }
 .itemText {
   padding: 20px;
-  width: 25em;
 }

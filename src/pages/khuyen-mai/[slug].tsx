@@ -2,13 +2,15 @@ import { GetServerSideProps } from 'next';
 import React from 'react';
 import axiosWrapper from '~/services/axiosConfig';
 import { BaiVietDichVuModel } from '../types';
+import Text from '~/components/Text';
 import styles from './index.module.scss';
 
-interface BaiVietDichVuProps {
+interface BaiVietKhuyenMai {
   data: BaiVietDichVuModel;
 }
 
-const BaiVietDichVu = ({ data }: BaiVietDichVuProps) => {
+const BaiVietKhuyenMai = ({ data }: BaiVietKhuyenMai) => {
+  console.log(data);
   return (
     <div className={styles.container}>
       <div className={styles.titleContainer}>
@@ -39,4 +41,4 @@ export const getServerSideProps: GetServerSideProps = async context => {
   };
 };
 
-export default BaiVietDichVu;
+export default BaiVietKhuyenMai;

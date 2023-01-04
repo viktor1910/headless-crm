@@ -4,6 +4,7 @@ export enum Categories {
   GiamBeo = 4,
   TreHoaDa = 5,
   TamTrang = 6,
+  KhuyenMai = 7,
   DichVuNoiBat = 11,
 }
 
@@ -31,6 +32,10 @@ export interface BaiVietDichVuModel {
   };
   excerpt?: {
     rendered: string;
+  };
+  acf?: {
+    feature_image_alt: string;
+    feature_image_url: string;
   };
 }
 

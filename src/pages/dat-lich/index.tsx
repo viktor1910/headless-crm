@@ -6,7 +6,16 @@ import Button from 'react-bootstrap/Button';
 import { Col, Container, Row } from 'react-bootstrap';
 import Image from 'next/image';
 import imgDatLich from '../../../public/img/imgDatLich.webp';
-const DatLich = () => {
+import { ImagesAPIResponse, ImagesModel } from '~/@types/Banner';
+import axiosWrapper from '~/services/axiosConfig';
+import { getImages } from '~/services/util';
+import { CardDichVuModel, Categories } from '../types';
+
+interface DatLichProps {
+  resultCenteringImg: ImagesModel[];
+}
+
+const DatLich = ({ resultCenteringImg }: DatLichProps) => {
   return (
     <>
       <Text
@@ -26,18 +35,20 @@ const DatLich = () => {
       <Container>
         <Row className={styles.displayRow}>
           <Col lg={6} className={styles.wrapperCol} style={{ margin: '0', padding: '0' }}>
-            <div className={styles.wrapperDatLich}>
-              <div className={styles.image1}>
-                <Image src={imgDatLich} alt="" />
-              </div>
-              <div className={styles.image2}>
-                <div className={styles.imageWrapper}></div>
-              </div>
+            {resultCenteringImg.length > 2 && (
+              <div className={styles.wrapperDatLich}>
+                <div className={styles.image1}>
+                  <Image src={resultCenteringImg[0].src} alt={resultCenteringImg[0].alt} width={400} height={400} />
+                </div>
+                <div className={styles.image2}>
+                  <div className={styles.imageWrapper}></div>
+                </div>
 
-              <div className={styles.image3}>
-                <Image src={imgDatLich} alt="" />
+                <div className={styles.image3}>
+                  <Image src={resultCenteringImg[1].src} alt={resultCenteringImg[1].alt} width={400} height={400} />
+                </div>
               </div>
-            </div>
+            )}
           </Col>
           <Col lg={6} className={styles.displayCol} style={{ margin: '0', padding: '0' }}>
             <Form>
@@ -67,6 +78,19 @@ const DatLich = () => {
       </Container>
     </>
   );
+};
+
+export const getServerSideProps = async () => {
+  const res = await axiosWrapper.get<ImagesAPIResponse[]>('/gallery').then(res => res.data);
+
+  const centering = res.find(i => i.slug === 'centering');
+
+  const resultCenteringImg = centering ? getImages(centering) : [];
+  return {
+    props: {
+      resultCenteringImg,
+    },
+  };
 };
 
 export default DatLich;

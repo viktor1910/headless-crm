@@ -1,11 +1,18 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Col, Container, Row } from 'react-bootstrap';
 import Section from '~/components/Section';
 import Text from '~/components/Text';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import styles from './index.module.scss';
-const LienHe = () => {
+import { MainDetailsModel } from '~/layout/PageLayout/types';
+import axiosWrapper from '~/services/axiosConfig';
+
+interface LienHeProps {
+  data: MainDetailsModel;
+}
+
+const LienHe = ({ data }: LienHeProps) => {
   return (
     <>
       <Text
@@ -42,121 +49,22 @@ const LienHe = () => {
                   marginBottom: '.5em',
                 }}
               >
-                Hệ Thống SHYNH PREMIUM
+                {data.acf.page_title}
               </Text>
               <div className={styles.textCustom}>
-                <Text
-                  type="body"
+                <span
+                  dangerouslySetInnerHTML={{ __html: data.acf.address_list }}
                   style={{
+                    fontSize: '20px',
                     textAlign: 'center',
                     color: '#666',
                     marginTop: '30px',
                     marginBottom: '.5em',
                     fontWeight: '600',
+                    lineHeight: '50px',
                   }}
-                >
-                  SHYNH PREMIUM Trần Quốc Thảo
-                </Text>
+                />
               </div>
-
-              <Text
-                type="smallBody"
-                style={{
-                  textAlign: 'center',
-                  color: '#666',
-                  marginTop: '10px',
-                  marginBottom: '.5em',
-                }}
-              >
-                33 Trần Quốc Thảo, P. 6, Q. 3, TP. HCM
-              </Text>
-              <Text
-                type="smallBody"
-                style={{
-                  textAlign: 'center',
-                  color: '#666',
-                  marginTop: '10px',
-                  marginBottom: '.5em',
-                }}
-              >
-                089 649 1919
-              </Text>
-            </div>
-            <div className={styles.contactInfoDetail}>
-              <div className={styles.textCustom}>
-                <Text
-                  type="body"
-                  style={{
-                    textAlign: 'center',
-                    color: '#666',
-                    marginTop: '30px',
-                    marginBottom: '.5em',
-                    fontWeight: '600',
-                  }}
-                >
-                  SHYNH PREMIUM Trần Quốc Thảo
-                </Text>
-              </div>
-              <Text
-                type="smallBody"
-                style={{
-                  textAlign: 'center',
-                  color: '#666',
-                  marginTop: '10px',
-                  marginBottom: '.5em',
-                }}
-              >
-                33 Trần Quốc Thảo, P. 6, Q. 3, TP. HCM
-              </Text>
-              <Text
-                type="smallBody"
-                style={{
-                  textAlign: 'center',
-                  color: '#666',
-                  marginTop: '10px',
-                  marginBottom: '.5em',
-                }}
-              >
-                089 649 1919
-              </Text>
-            </div>
-            <div className={styles.contactInfoDetail}>
-              <div className={styles.textCustom}>
-                <Text
-                  type="body"
-                  style={{
-                    textAlign: 'center',
-                    color: '#666',
-                    marginTop: '30px',
-                    marginBottom: '.5em',
-                    fontWeight: '600',
-                  }}
-                >
-                  SHYNH PREMIUM Trần Quốc Thảo
-                </Text>
-              </div>
-              <Text
-                type="smallBody"
-                style={{
-                  textAlign: 'center',
-                  color: '#666',
-                  marginTop: '10px',
-                  marginBottom: '.5em',
-                }}
-              >
-                33 Trần Quốc Thảo, P. 6, Q. 3, TP. HCM
-              </Text>
-              <Text
-                type="smallBody"
-                style={{
-                  textAlign: 'center',
-                  color: '#666',
-                  marginTop: '10px',
-                  marginBottom: '.5em',
-                }}
-              >
-                089 649 1919
-              </Text>
             </div>
           </Col>
           <Col lg={8}>
@@ -196,3 +104,19 @@ const LienHe = () => {
 };
 
 export default LienHe;
+
+export const getServerSideProps = async () => {
+  const res = await axiosWrapper
+    .get<MainDetailsModel[]>('/gallery', {
+      params: {
+        slug: 'main-details',
+      },
+    })
+    .then(res => res.data[0]);
+
+  return {
+    props: {
+      data: res,
+    },
+  };
+};
