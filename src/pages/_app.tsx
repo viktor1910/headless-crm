@@ -4,7 +4,7 @@ import 'slick-carousel/slick/slick-theme.css';
 import type { AppProps } from 'next/app';
 import { NextPage } from 'next/types';
 import { ReactElement } from 'react';
-import PageLayout from '~/layout/DefaultLayout';
+import PageLayout from '~/layout/PageLayout';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';

@@ -11,7 +11,6 @@ import { CardDichVuModel, Categories } from './types';
 interface HomeProps {
   resultBannerDesktop: ImagesModel[];
   resultBannerMobile: ImagesModel[];
-  resultAbout: string;
   resultWelcome: ImagesModel[];
   resultWelcomeText: ImagesAPIResponse;
   resultCenteringImg: ImagesModel[];
@@ -23,7 +22,6 @@ interface HomeProps {
 export default function Home({
   resultBannerDesktop,
   resultBannerMobile,
-  resultAbout,
   resultWelcome,
   resultWelcomeText,
   resultCenteringImg,
@@ -39,7 +37,7 @@ export default function Home({
       <Container>
         <Section title="CHÀO MỪNG BẠN ĐẾN VỚI" subTitle={resultWelcomeText.acf?.welcome_title}>
           <span
-            dangerouslySetInnerHTML={{ __html: resultAbout || '' }}
+            dangerouslySetInnerHTML={{ __html: resultWelcomeText.acf?.welcome_description || '' }}
             style={{
               textAlign: 'center',
               color: '#666',
@@ -66,13 +64,11 @@ export const getServerSideProps = async () => {
 
   const bannerDesktop = res.find(i => i.slug === 'banner-desktop');
   const bannerMobile = res.find(i => i.slug === 'banner-mobile');
-  const about = res.find(i => i.slug === 'about');
   const welcome = res.find(i => i.slug === 'welcome');
   const centering = res.find(i => i.slug === 'centering');
 
   const resultBannerDesktop = bannerDesktop ? getImages(bannerDesktop) : [];
   const resultBannerMobile = bannerMobile ? getImages(bannerMobile) : [];
-  const resultAbout = about?.content.rendered;
   const resultWelcome = welcome ? getImages(welcome) : [];
   const resultWelcomeText = welcome;
   const resultCenteringImg = centering ? getImages(centering) : [];
@@ -91,7 +87,6 @@ export const getServerSideProps = async () => {
     props: {
       resultBannerDesktop,
       resultBannerMobile,
-      resultAbout,
       resultWelcome,
       resultWelcomeText,
       resultCenteringImg,
