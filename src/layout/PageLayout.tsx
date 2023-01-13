@@ -11,17 +11,30 @@ interface PageLayoutProps {
 
 const PageLayout = ({ children }: PageLayoutProps) => {
   const [mainDetails, setMainDetails] = useState<MainDetailsModel | undefined>();
+  // useEffect(() => {
+  //   axiosWrapper
+  //     .get<MainDetailsModel[]>('/gallery', {
+  //       params: {
+  //         slug: 'main-details',
+  //       },
+  //     })
+  //     .then(res => {
+  //       setMainDetails(res.data[0]);
+  //     });
+  // }, [mainDetails]);
   useEffect(() => {
     axiosWrapper
+
       .get<MainDetailsModel[]>('/gallery', {
         params: {
           slug: 'main-details',
         },
       })
+
       .then(res => {
         setMainDetails(res.data[0]);
       });
-  }, [mainDetails]);
+  }, []);
 
   return (
     <>
