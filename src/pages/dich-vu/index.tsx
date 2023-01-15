@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import Section from '~/components/Section';
 import Text from '~/components/Text';
 import styles from './index.module.scss';
@@ -10,7 +10,7 @@ import CardDichVu from '../../components/DichVu/components/CardDichVu';
 import CardPostDichVu from '../../components/DichVu/components/CardPostDichVu';
 import axiosWrapper from '~/services/axiosConfig';
 import { CardDichVuModel, Categories } from '../../services/types';
-
+// import axios from 'axios';
 const settings = {
   dots: true,
   infinite: false,
@@ -68,6 +68,19 @@ interface DichVuProps {
 }
 
 const DichVu = ({ data, dichVuNoiBat, danhMucDichVu }: DichVuProps) => {
+  // useEffect(() => {
+  //   axiosWrapper
+
+  //     .get('/posts', {
+  //       params: {
+  //         categories: Categories.DichVuNoiBat,
+  //         per_page: 10,
+  //       },
+  //     })
+
+  //     .then(res => console.log(res.data));
+  // });
+
   return (
     <>
       <Section title="Dịch Vụ Nổi Bật" subTitle="">
@@ -127,7 +140,10 @@ export const getServerSideProps = async () => {
         },
       })
       .then(res => res.data)) || [];
+
   const danhMucDichVu = (await axiosWrapper.get<CardDichVuModel[]>('/danh-muc-dich-vu').then(res => res.data)) || [];
+  // console.log(danhMucDichVu + 'aaa');
+  // console.log(dichVuNoiBat + 'bbb');
   return {
     props: {
       data: res,

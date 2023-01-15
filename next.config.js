@@ -10,7 +10,7 @@ const nextConfig = {
     remotePatterns: [
       {
         protocol: 'http',
-        hostname: 'kanghee.local',
+        hostname: 'be.kangheevietnam.com',
       },
     ],
   },

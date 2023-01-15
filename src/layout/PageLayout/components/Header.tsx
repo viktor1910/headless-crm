@@ -39,7 +39,7 @@ const Header = ({ mainDetails }: HeaderProps) => {
           <div className={styles.headerLogo}>
             <Navbar.Toggle aria-controls="offcanvasNavbar-expand-lg" />
 
-            <Navbar.Brand href="#">
+            <Navbar.Brand href="/">
               <Image src={mainDetails?.acf.logo_header || ''} alt="" width={130} height={100} />
             </Navbar.Brand>
             <span className={styles.headerSearchIcon}></span>
