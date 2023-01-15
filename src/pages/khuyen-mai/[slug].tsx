@@ -2,7 +2,6 @@ import { GetServerSideProps } from 'next';
 import React from 'react';
 import axiosWrapper from '~/services/axiosConfig';
 import { BaiVietDichVuModel } from '../../services/types';
-import Text from '~/components/Text';
 import styles from './index.module.scss';
 
 interface BaiVietKhuyenMai {
@@ -10,7 +9,6 @@ interface BaiVietKhuyenMai {
 }
 
 const BaiVietKhuyenMai = ({ data }: BaiVietKhuyenMai) => {
-  console.log(data);
   return (
     <div className={styles.container}>
       <div className={styles.titleContainer}>

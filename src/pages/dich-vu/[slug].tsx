@@ -70,7 +70,6 @@ interface DichVuProps {
 }
 
 const DichVu = ({ data, dichVuNoiBat, danhMucDichVu, name }: DichVuProps) => {
-  console.log(data);
   return (
     <>
       <Section title={name} subTitle="Dịch vụ nổi bật">

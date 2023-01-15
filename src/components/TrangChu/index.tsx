@@ -2,7 +2,6 @@ import React from 'react';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import Image from 'next/image';
 import styles from './index.module.scss';
 import Text from '~/components/Text';
 import Card from 'react-bootstrap/Card';
@@ -112,7 +111,6 @@ const TrangChu = ({
   review,
   resultWelcomeText,
 }: TrangChuProps) => {
-  // console.log('123' + dichVuNoiBat);
   return (
     <>
       <Container fluid>
