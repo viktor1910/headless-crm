@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
 import Image from 'next/image';
-import logo from '../../../../public/favicon.jpeg';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
@@ -40,7 +39,7 @@ const Header = ({ mainDetails }: HeaderProps) => {
           <div className={styles.headerLogo}>
             <Navbar.Toggle aria-controls="offcanvasNavbar-expand-lg" />
 
-            <Navbar.Brand href="#">
+            <Navbar.Brand href="/">
               <Image src={mainDetails?.acf.logo_header || ''} alt="" width={130} height={100} />
             </Navbar.Brand>
             <span className={styles.headerSearchIcon}></span>

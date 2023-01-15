@@ -1,11 +1,12 @@
 export enum Categories {
-  DichVu = 2,
-  DichVuKhac = 3,
-  GiamBeo = 4,
-  TreHoaDa = 5,
-  TamTrang = 6,
-  KhuyenMai = 7,
-  DichVuNoiBat = 11,
+  DichVu = 3,
+  // DichVuKhac = 3,
+  NangMui = 4,
+  HutMo = 6,
+  CatMi = 5,
+  NangNguc = 4,
+  DichVuNoiBat = 9,
+  KhuyenMai = 8,
 }
 
 export interface CardDichVuModel {

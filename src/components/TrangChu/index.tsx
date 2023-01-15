@@ -112,6 +112,7 @@ const TrangChu = ({
   review,
   resultWelcomeText,
 }: TrangChuProps) => {
+  // console.log('123' + dichVuNoiBat);
   return (
     <>
       <Container fluid>
@@ -175,7 +176,7 @@ const TrangChu = ({
         <Row className={styles.rowService}>
           <Col lg={4} md={12}>
             <Row xs={2}>
-              {chunkArray(dichVuNoiBat, 2)[0].map(dichvu => {
+              {chunkArray(dichVuNoiBat, 2)[0]?.map(dichvu => {
                 return (
                   <Col lg={6} style={{ padding: '0' }} className={styles.colServices} key={dichvu?.slug}>
                     <Link
