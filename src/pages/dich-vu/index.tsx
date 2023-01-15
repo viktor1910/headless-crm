@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Section from '~/components/Section';
 import Text from '~/components/Text';
 import styles from './index.module.scss';

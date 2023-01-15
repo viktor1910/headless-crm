@@ -21,7 +21,7 @@ const PageLayout = ({ children }: PageLayoutProps) => {
       .then(res => {
         setMainDetails(res.data[0]);
       });
-  }, [mainDetails]);
+  }, []);
 
   return (
     <>

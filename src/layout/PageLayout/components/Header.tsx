@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
 import Image from 'next/image';
-import logo from '../../../../public/favicon.jpeg';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
