@@ -1,7 +1,7 @@
 import axios, { AxiosError } from 'axios';
 
 const axiosWrapper = axios.create({
-  baseURL: 'http://be.kangheevietnam.com/wp-json/wp/v2/',
+  baseURL: 'https://be.kangheevietnam.com/wp-json/wp/v2/',
 });
 
 axiosWrapper.interceptors.response.use(undefined, function (error: AxiosError): Promise<ComposedError> {
