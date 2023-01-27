@@ -9,6 +9,10 @@ const nextConfig = {
   images: {
     remotePatterns: [
       {
+        protocol: 'https',
+        hostname: 'be.kangheevietnam.com',
+      },
+      {
         protocol: 'http',
         hostname: 'be.kangheevietnam.com',
       },
