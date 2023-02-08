@@ -1,16 +1,17 @@
 import React from 'react';
 import Section from '~/components/Section';
-import Text from '~/components/Text';
 import styles from './index.module.scss';
 import Slider from 'react-slick';
 import { Container } from 'react-bootstrap';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import axiosWrapper from '~/services/axiosConfig';
-import { CardDichVuModel, Categories, CategoriesModel } from '~/services/types';
+import { CardDichVuModel, CategoriesModel } from '~/services/types';
 import CardDichVu from '../../components/DichVu/components/CardDichVu';
 import CardPostDichVu from '../../components/DichVu/components/CardPostDichVu';
-import { GetServerSideProps } from 'next/types';
+import { GetStaticProps } from 'next/types';
+import { MainDetailsModel } from '~/layout/PageLayout/types';
+import PageLayout from '~/layout/PageLayout';
 
 const settings = {
   dots: true,
@@ -67,11 +68,12 @@ interface DichVuProps {
   dichVuNoiBat: CardDichVuModel[];
   danhMucDichVu: CardDichVuModel[];
   name: string;
+  mainDetails: MainDetailsModel;
 }
 
-const DichVu = ({ data, dichVuNoiBat, danhMucDichVu, name }: DichVuProps) => {
+const DichVu = ({ data, dichVuNoiBat, danhMucDichVu, name, mainDetails }: DichVuProps) => {
   return (
-    <>
+    <PageLayout mainDetails={mainDetails}>
       <Section title={name} subTitle="Dịch vụ nổi bật">
         <Container fluid>
           <Slider {...settings}>
@@ -104,13 +106,20 @@ const DichVu = ({ data, dichVuNoiBat, danhMucDichVu, name }: DichVuProps) => {
           ))}
         </Row>
       </Section>
-    </>
+    </PageLayout>
   );
 };
 
 export default DichVu;
 
-export const getServerSideProps: GetServerSideProps = async context => {
+export const getStaticProps: GetStaticProps = async context => {
+  const mainDetails = await axiosWrapper
+    .get<MainDetailsModel[]>('/gallery', {
+      params: {
+        slug: 'main-details',
+      },
+    })
+    .then(res => res.data[0]);
   const res = await axiosWrapper
     .get<CardDichVuModel[]>('/posts', {
       params: {
@@ -144,6 +153,8 @@ export const getServerSideProps: GetServerSideProps = async context => {
       dichVuNoiBat,
       danhMucDichVu,
       name: categories ? categories[0].name : '',
+      mainDetails,
     },
+    revalidate: 1,
   };
 };

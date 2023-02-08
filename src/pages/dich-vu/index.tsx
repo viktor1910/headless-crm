@@ -1,6 +1,5 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import Section from '~/components/Section';
-import Text from '~/components/Text';
 import styles from './index.module.scss';
 import Slider from 'react-slick';
 import { Container } from 'react-bootstrap';
@@ -9,8 +8,10 @@ import Col from 'react-bootstrap/Col';
 import CardDichVu from '../../components/DichVu/components/CardDichVu';
 import CardPostDichVu from '../../components/DichVu/components/CardPostDichVu';
 import axiosWrapper from '~/services/axiosConfig';
-import { CardDichVuModel, Categories } from '../../services/types';
-// import axios from 'axios';
+import { CardDichVuModel } from '../../services/types';
+import { MainDetailsModel } from '~/layout/PageLayout/types';
+import PageLayout from '~/layout/PageLayout';
+
 const settings = {
   dots: true,
   infinite: false,
@@ -65,11 +66,12 @@ interface DichVuProps {
   data: CardDichVuModel[];
   dichVuNoiBat: CardDichVuModel[];
   danhMucDichVu: CardDichVuModel[];
+  mainDetails: MainDetailsModel;
 }
 
-const DichVu = ({ data, dichVuNoiBat, danhMucDichVu }: DichVuProps) => {
+const DichVu = ({ data, dichVuNoiBat, danhMucDichVu, mainDetails }: DichVuProps) => {
   return (
-    <>
+    <PageLayout mainDetails={mainDetails}>
       <Section title="Dịch Vụ Nổi Bật" subTitle="">
         <Container fluid>
           <Slider {...settings}>
@@ -102,18 +104,42 @@ const DichVu = ({ data, dichVuNoiBat, danhMucDichVu }: DichVuProps) => {
           ))}
         </Row>
       </Section>
-    </>
+    </PageLayout>
   );
 };
 
 export default DichVu;
 
-export const getServerSideProps = async () => {
+export const getStaticProps = async () => {
+  const mainDetails = await axiosWrapper
+    .get<MainDetailsModel[]>('/gallery', {
+      params: {
+        slug: 'main-details',
+      },
+    })
+    .then(res => res.data[0]);
+
+  const { id: idDichVu } = await axiosWrapper
+    .get<any>('/categories', {
+      params: {
+        slug: 'dich-vu',
+      },
+    })
+    .then(res => res.data?.at(0));
+
+  const { id: idDichVuNoiBat } = await axiosWrapper
+    .get<any>('/categories', {
+      params: {
+        slug: 'dich-vu-noi-bat',
+      },
+    })
+    .then(res => res.data?.at(0));
+
   const res =
     (await axiosWrapper
       .get<CardDichVuModel[]>('/posts', {
         params: {
-          categories: Categories.DichVu,
+          categories: idDichVu,
           per_page: 10,
         },
       })
@@ -122,7 +148,7 @@ export const getServerSideProps = async () => {
     (await axiosWrapper
       .get<CardDichVuModel[]>('/posts', {
         params: {
-          categories: Categories.DichVuNoiBat,
+          categories: idDichVuNoiBat,
           per_page: 10,
         },
       })
@@ -134,6 +160,8 @@ export const getServerSideProps = async () => {
       data: res,
       dichVuNoiBat,
       danhMucDichVu,
+      mainDetails,
     },
+    revalidate: 1,
   };
 };

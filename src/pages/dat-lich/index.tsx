@@ -5,19 +5,20 @@ import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import { Col, Container, Row } from 'react-bootstrap';
 import Image from 'next/image';
-import imgDatLich from '../../../public/img/imgDatLich.webp';
 import { ImagesAPIResponse, ImagesModel } from '~/@types/Banner';
 import axiosWrapper from '~/services/axiosConfig';
 import { getImages } from '~/services/util';
-import { CardDichVuModel, Categories } from '../../services/types';
+import { MainDetailsModel } from '~/layout/PageLayout/types';
+import PageLayout from '~/layout/PageLayout';
 
 interface DatLichProps {
   resultCenteringImg: ImagesModel[];
+  mainDetails: MainDetailsModel;
 }
 
-const DatLich = ({ resultCenteringImg }: DatLichProps) => {
+const DatLich = ({ resultCenteringImg, mainDetails }: DatLichProps) => {
   return (
-    <>
+    <PageLayout mainDetails={mainDetails}>
       <Text
         type="title"
         style={{
@@ -76,11 +77,19 @@ const DatLich = ({ resultCenteringImg }: DatLichProps) => {
           </Col>
         </Row>
       </Container>
-    </>
+    </PageLayout>
   );
 };
 
-export const getServerSideProps = async () => {
+export const getStaticProps = async () => {
+  const mainDetails = await axiosWrapper
+    .get<MainDetailsModel[]>('/gallery', {
+      params: {
+        slug: 'main-details',
+      },
+    })
+    .then(res => res.data[0]);
+
   const res = await axiosWrapper.get<ImagesAPIResponse[]>('/gallery').then(res => res.data);
 
   const centering = res.find(i => i.slug === 'centering');
@@ -89,7 +98,9 @@ export const getServerSideProps = async () => {
   return {
     props: {
       resultCenteringImg,
+      mainDetails,
     },
+    revalidate: 1,
   };
 };
 

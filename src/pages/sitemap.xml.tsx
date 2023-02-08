@@ -1,6 +1,6 @@
 import React from 'react';
 import axiosWrapper from '~/services/axiosConfig';
-import { CardDichVuModel, Categories } from '~/services/types';
+import { CardDichVuModel } from '~/services/types';
 
 const mainuri = 'https://kangheevietnam.com';
 
@@ -47,19 +47,19 @@ function generateSiteMap(danhMucDichVu: CardDichVuModel[], dichvu: CardDichVuMod
 
 function SiteMap() {}
 export async function getServerSideProps({ res }: any) {
+  const { id: idDichVu } = await axiosWrapper
+    .get<any>('/categories', {
+      params: {
+        slug: 'dich-vu',
+      },
+    })
+    .then(res => res.data?.at(0));
+
   const dichvu =
     (await axiosWrapper
       .get<CardDichVuModel[]>('/posts', {
         params: {
-          categories: Categories.DichVu,
-        },
-      })
-      .then(res => res.data)) || [];
-  const dichVuNoiBat =
-    (await axiosWrapper
-      .get<CardDichVuModel[]>('/posts', {
-        params: {
-          categories: Categories.DichVuNoiBat,
+          categories: idDichVu,
         },
       })
       .then(res => res.data)) || [];

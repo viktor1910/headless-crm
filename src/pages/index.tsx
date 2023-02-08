@@ -1,4 +1,3 @@
-import Text from '~/components/Text';
 import Banner from '~/components/Banner';
 import { Container } from 'react-bootstrap';
 import Section from '~/components/Section';
@@ -6,7 +5,9 @@ import TrangChu from '~/components/TrangChu';
 import axiosWrapper from '~/services/axiosConfig';
 import { ImagesAPIResponse, ImagesModel, ReviewModel } from '~/@types/Banner';
 import { getImages } from '~/services/util';
-import { CardDichVuModel, Categories } from '../services/types';
+import { CardDichVuModel } from '../services/types';
+import { MainDetailsModel } from '~/layout/PageLayout/types';
+import PageLayout from '~/layout/PageLayout';
 
 interface HomeProps {
   resultBannerDesktop: ImagesModel[];
@@ -17,6 +18,7 @@ interface HomeProps {
   resultCenteringMain: string;
   review: ReviewModel[];
   dichVuNoiBat: CardDichVuModel[];
+  mainDetails: MainDetailsModel;
 }
 
 export default function Home({
@@ -28,9 +30,10 @@ export default function Home({
   resultCenteringMain,
   review,
   dichVuNoiBat,
+  mainDetails,
 }: HomeProps) {
   return (
-    <>
+    <PageLayout mainDetails={mainDetails}>
       <div>
         <Banner bannerLg={resultBannerDesktop} bannerMd={resultBannerMobile} />
       </div>
@@ -54,11 +57,19 @@ export default function Home({
         resultWelcomeText={resultWelcomeText}
         review={review}
       />
-    </>
+    </PageLayout>
   );
 }
 
-export const getServerSideProps = async () => {
+export const getStaticProps = async () => {
+  const mainDetails = await axiosWrapper
+    .get<MainDetailsModel[]>('/gallery', {
+      params: {
+        slug: 'main-details',
+      },
+    })
+    .then(res => res.data[0]);
+
   const res = await axiosWrapper.get<ImagesAPIResponse[]>('/gallery').then(res => res.data);
   const review = await axiosWrapper.get<ReviewModel[]>('/review').then(res => res.data);
 
@@ -74,10 +85,18 @@ export const getServerSideProps = async () => {
   const resultCenteringImg = centering ? getImages(centering) : [];
   const resultCenteringMain = centering?.acf?.center_image;
 
+  const { id: idDichVuNoiBat } = await axiosWrapper
+    .get<any>('/categories', {
+      params: {
+        slug: 'dich-vu-noi-bat',
+      },
+    })
+    .then(res => res.data?.at(0));
+
   const dichVuNoiBat = await axiosWrapper
     .get<CardDichVuModel[]>('/posts', {
       params: {
-        categories: Categories.DichVuNoiBat,
+        categories: idDichVuNoiBat,
         per_page: 8,
       },
     })
@@ -93,6 +112,8 @@ export const getServerSideProps = async () => {
       resultCenteringMain,
       review,
       dichVuNoiBat,
+      mainDetails,
     },
+    revalidate: 1,
   };
 };

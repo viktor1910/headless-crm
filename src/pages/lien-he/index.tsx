@@ -7,6 +7,7 @@ import Form from 'react-bootstrap/Form';
 import styles from './index.module.scss';
 import { MainDetailsModel } from '~/layout/PageLayout/types';
 import axiosWrapper from '~/services/axiosConfig';
+import PageLayout from '~/layout/PageLayout';
 
 interface LienHeProps {
   data: MainDetailsModel;
@@ -14,7 +15,7 @@ interface LienHeProps {
 
 const LienHe = ({ data }: LienHeProps) => {
   return (
-    <>
+    <PageLayout mainDetails={data}>
       <Text
         type="title"
         style={{
@@ -99,13 +100,13 @@ const LienHe = ({ data }: LienHeProps) => {
           </Col>
         </Row>
       </Container>
-    </>
+    </PageLayout>
   );
 };
 
 export default LienHe;
 
-export const getServerSideProps = async () => {
+export const getStaticProps = async () => {
   const res = await axiosWrapper
     .get<MainDetailsModel[]>('/gallery', {
       params: {
@@ -113,10 +114,10 @@ export const getServerSideProps = async () => {
       },
     })
     .then(res => res.data[0]);
-
   return {
     props: {
       data: res,
     },
+    revalidate: 1,
   };
 };

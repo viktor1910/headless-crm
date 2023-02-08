@@ -3,19 +3,20 @@ import styles from './index.module.scss';
 import Text from '~/components/Text';
 import Section from '~/components/Section';
 import { Col, Container, Row } from 'react-bootstrap';
-import Image from 'next/image';
-import { GetServerSideProps } from 'next';
 import axiosWrapper from '~/services/axiosConfig';
-import { BaiVietDichVuModel, Categories } from '../../services/types';
+import { BaiVietDichVuModel } from '../../services/types';
 import Link from 'next/link';
+import { MainDetailsModel } from '~/layout/PageLayout/types';
+import PageLayout from '~/layout/PageLayout';
 
 interface KhuyenMaiProps {
   data: BaiVietDichVuModel[];
+  mainDetails: MainDetailsModel;
 }
 
-const KhuyenMai = ({ data }: KhuyenMaiProps) => {
+const KhuyenMai = ({ data, mainDetails }: KhuyenMaiProps) => {
   return (
-    <>
+    <PageLayout mainDetails={mainDetails}>
       <Section title="Thẻ Quà Tặng" subTitle="">
         <Text
           type="body"
@@ -74,23 +75,32 @@ const KhuyenMai = ({ data }: KhuyenMaiProps) => {
           ))}
         </Row>
       </Container>
-    </>
+    </PageLayout>
   );
 };
 
-export const getServerSideProps: GetServerSideProps = async () => {
+export const getStaticProps = async () => {
   const res = await axiosWrapper
-    .get<BaiVietDichVuModel[]>('posts', {
+    .get<BaiVietDichVuModel[]>('khuyen-mai', {
       params: {
-        categories: Categories.KhuyenMai,
         per_page: 10,
       },
     })
     .then(resp => resp.data);
+
+  const mainDetails = await axiosWrapper
+    .get<MainDetailsModel[]>('/gallery', {
+      params: {
+        slug: 'main-details',
+      },
+    })
+    .then(res => res.data[0]);
   return {
     props: {
       data: res,
+      mainDetails,
     },
+    revalidate: 1,
   };
 };
 
