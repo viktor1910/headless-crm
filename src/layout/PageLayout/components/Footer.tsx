@@ -38,14 +38,14 @@ const Footer = ({ mainDetails }: FooterProps) => {
               marginTop: '10px',
             }}
           >
-            <span
+            {/* <span
               dangerouslySetInnerHTML={{ __html: mainDetails?.acf.address_list || '' }}
               style={{
                 textAlign: 'center',
                 color: '#666',
                 marginTop: '10px',
               }}
-            />
+            /> */}
           </Text>
           <Text
             type="smallBody"
