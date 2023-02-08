@@ -252,6 +252,45 @@ const TrangChu = ({
             </Row>
           </Col>
         </Row>
+        <Row className={styles.rowServiceMobile}>
+          <Col lg={4} md={12}>
+            <Row xs={2}>
+              {dichVuNoiBat.map(dichvu => {
+                return (
+                  <Col lg={6} style={{ padding: '0' }} className={styles.colServices} key={dichvu?.slug}>
+                    <Link
+                      href={`/bai-viet/${dichvu?.slug}`}
+                      style={{
+                        textDecoration: 'none',
+                      }}
+                    >
+                      <Card className={styles.cardServices}>
+                        <img
+                          src={dichvu?.acf?.feature_image_url || ''}
+                          alt={dichvu?.acf?.feature_image_alt || ''}
+                          style={{ padding: '10px 5px' }}
+                        />
+                        <Card.Body style={{ padding: '0' }}>
+                          <Text
+                            type="body"
+                            style={{
+                              textAlign: 'center',
+                              color: '#666',
+                              marginTop: '10px',
+                              marginBottom: '.5em',
+                            }}
+                          >
+                            {dichvu?.title.rendered}
+                          </Text>
+                        </Card.Body>
+                      </Card>
+                    </Link>
+                  </Col>
+                );
+              })}
+            </Row>
+          </Col>
+        </Row>
         <Text
           type="title"
           style={{
