@@ -13,7 +13,7 @@ const PageLayout = ({ children, mainDetails }: PageLayoutProps) => {
   return (
     <>
       <Header mainDetails={mainDetails} />
-      <main className={styles.mainContainer}> {children}</main>
+      <main className={styles.mainContainer}>{children}</main>
       <Footer mainDetails={mainDetails} />
     </>
   );

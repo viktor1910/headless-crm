@@ -14,15 +14,16 @@ interface HeaderProps {
 }
 
 const Header = ({ mainDetails }: HeaderProps) => {
-  const [scrollY, setScrollY] = React.useState(0);
+  const [scrollY, setScrollY] = React.useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrollY(window.scrollY);
+      if (window.scrollY > 200) {
+        setScrollY(true);
+      } else {
+        setScrollY(false);
+      }
     };
-
-    handleScroll();
-
     window.addEventListener('scroll', handleScroll);
 
     return () => {
@@ -35,12 +36,12 @@ const Header = ({ mainDetails }: HeaderProps) => {
         <link rel="shortcut icon" href={mainDetails?.acf.Favicon} />
       </Head>
       <Navbar bg="white" expand="lg">
-        <Container fluid className={scrollY > 200 ? styles.scrolled : styles.headerContainer}>
+        <Container fluid className={scrollY ? styles.scrolled : styles.headerContainer}>
           <div className={styles.headerLogo}>
             <Navbar.Toggle aria-controls="offcanvasNavbar-expand-lg" />
 
             <Navbar.Brand href="/">
-              <Image src={mainDetails?.acf.logo_header || ''} alt="" width={130} height={100} />
+              <img src={mainDetails?.acf.logo_header || ''} alt="" />
             </Navbar.Brand>
             <span className={styles.headerSearchIcon}></span>
           </div>
