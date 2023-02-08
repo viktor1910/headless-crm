@@ -9,7 +9,7 @@ import axiosWrapper from '~/services/axiosConfig';
 import { CardDichVuModel, CategoriesModel } from '~/services/types';
 import CardDichVu from '../../components/DichVu/components/CardDichVu';
 import CardPostDichVu from '../../components/DichVu/components/CardPostDichVu';
-import { GetStaticProps } from 'next/types';
+import { GetServerSideProps } from 'next/types';
 import { MainDetailsModel } from '~/layout/PageLayout/types';
 import PageLayout from '~/layout/PageLayout';
 
@@ -112,7 +112,7 @@ const DichVu = ({ data, dichVuNoiBat, danhMucDichVu, name, mainDetails }: DichVu
 
 export default DichVu;
 
-export const getStaticProps: GetStaticProps = async context => {
+export const getServerSideProps: GetServerSideProps = async context => {
   const mainDetails = await axiosWrapper
     .get<MainDetailsModel[]>('/gallery', {
       params: {
@@ -129,14 +129,24 @@ export const getStaticProps: GetStaticProps = async context => {
       },
     })
     .then(res => res.data);
+
+  const { id: idDichVuNoiBat } = await axiosWrapper
+    .get<any>('/categories', {
+      params: {
+        slug: 'dich-vu-noi-bat',
+      },
+    })
+    .then(res => res.data?.at(0));
+
   const dichVuNoiBat = await axiosWrapper
     // @ts-ignore
-    .get<CardDichVuModel[]>(`/posts?categories=${Categories.DichVuNoiBat}&categories=${context.params.slug}`, {
+    .get<CardDichVuModel[]>(`/posts?categories=${idDichVuNoiBat}&categories=${context.params.slug}`, {
       params: {
         per_page: 10,
       },
     })
     .then(res => res.data);
+
   const danhMucDichVu = await axiosWrapper.get<CardDichVuModel[]>('/danh-muc-dich-vu').then(res => res.data);
 
   const categories = await axiosWrapper
@@ -155,6 +165,5 @@ export const getStaticProps: GetStaticProps = async context => {
       name: categories ? categories[0].name : '',
       mainDetails,
     },
-    revalidate: 1,
   };
 };
