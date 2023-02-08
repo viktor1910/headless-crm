@@ -55,7 +55,6 @@ const CardDichVu = ({ data, type }: CardDichVuProps) => {
             type="title"
             style={{
               textAlign: 'center',
-              color: '#666',
               marginTop: '10px',
               marginBottom: '.5em',
             }}

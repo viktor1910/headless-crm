@@ -35,7 +35,7 @@ const Header = ({ mainDetails }: HeaderProps) => {
       <Head>
         <link rel="shortcut icon" href={mainDetails?.acf.Favicon} />
       </Head>
-      <Navbar bg="white" expand="lg">
+      <Navbar bg="white" expand="lg" fixed="top">
         <Container fluid className={scrollY ? styles.scrolled : styles.headerContainer}>
           <div className={styles.headerLogo}>
             <Navbar.Toggle aria-controls="offcanvasNavbar-expand-lg" />
